@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Gaming Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --flash-red: #dc2626;
+            --flash-yellow: #fbbf24;
+            --flash-gold: #f59e0b;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --text-light: #f8fafc;
+            --text-gray: #94a3b8;
+            --gradient-primary: linear-gradient(135deg, var(--flash-red), var(--flash-gold));
+            --gradient-secondary: linear-gradient(135deg, var(--flash-yellow), var(--flash-gold));
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Lightning Animation Background */
+        .lightning-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(251, 191, 36, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: pulse 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(220, 38, 38, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--flash-yellow);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--flash-yellow);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.4);
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 20px rgba(220, 38, 38, 0.5); }
+            100% { text-shadow: 0 0 30px rgba(220, 38, 38, 0.8), 0 0 40px rgba(251, 191, 36, 0.3); }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(220, 38, 38, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--flash-yellow);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Games Grid */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .game-card {
+            background: linear-gradient(145deg, rgba(220, 38, 38, 0.1), rgba(5, 5, 5, 0.9));
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.3);
+        }
+
+        .game-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .game-content {
+            padding: 1.5rem;
+        }
+
+        .game-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--flash-yellow);
+        }
+
+        .game-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .game-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(251, 191, 36, 0.2);
+            color: var(--flash-yellow);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .form-label {
+            margin-bottom: 0.5rem;
+            color: var(--flash-yellow);
+            font-weight: 600;
+        }
+
+        .form-input {
+            padding: 1rem;
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 10px;
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--flash-yellow);
+            background: rgba(220, 38, 38, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 1rem 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--darker-bg);
+            border-top: 1px solid rgba(220, 38, 38, 0.3);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Speed lines animation */
+        .speed-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .speed-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--flash-yellow), transparent);
+            animation: speedLine 0.5s linear infinite;
+        }
+
+        @keyframes speedLine {
+            0% {
+                left: -100%;
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                left: 100%;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="lightning-bg"></div>
+    <div class="speed-lines" id="speedLines"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">⚡ Flash Gaming</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#games" class="nav-link">Games</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Lightning Fast Gaming</h1>
+            <p class="hero-subtitle">Experience the speed of next-generation game development</p>
+            <a href="#games" class="hero-cta">View My Games</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">About The Flash Developer</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Welcome to my gaming portfolio! I'm a passionate game developer who believes in creating experiences as fast and electrifying as The Flash himself. With lightning-speed development cycles and cutting-edge technology, I bring ideas to life faster than you can blink.</p>
+                <br>
+                <p>Specializing in high-performance games with stunning visuals and responsive gameplay, I harness the power of modern game engines to deliver unforgettable gaming experiences.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Games Created</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1M+</span>
+                    <span class="stat-label">Players Reached</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">99%</span>
+                    <span class="stat-label">Client Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="games" class="section">
+        <h2 class="section-title">Lightning Portfolio</h2>
+        <div class="games-grid">
+            <div class="game-card">
+                <div class="game-image">⚡</div>
+                <div class="game-content">
+                    <h3 class="game-title">Speed Runner Elite</h3>
+                    <p class="game-description">A high-octane endless runner where players harness lightning powers to overcome obstacles at superhuman speeds.</p>
+                    <div class="game-tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">Mobile</span>
+                        <span class="tag">Action</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-image">🎮</div>
+                <div class="game-content">
+                    <h3 class="game-title">Flash Force Arena</h3>
+                    <p class="game-description">Multiplayer combat game featuring lightning-based abilities and time manipulation mechanics.</p>
+                    <div class="game-tags">
+                        <span class="tag">Unreal</span>
+                        <span class="tag">Multiplayer</span>
+                        <span class="tag">Combat</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-image">🌟</div>
+                <div class="game-content">
+                    <h3 class="game-title">Velocity Puzzle</h3>
+                    <p class="game-description">Mind-bending puzzle game that challenges players to think at the speed of light.</p>
+                    <div class="game-tags">
+                        <span class="tag">C#</span>
+                        <span class="tag">Puzzle</span>
+                        <span class="tag">Logic</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-image">🔥</div>
+                <div class="game-content">
+                    <h3 class="game-title">Thunder Strike</h3>
+                    <p class="game-description">Retro-style arcade shooter with modern graphics and lightning-fast gameplay mechanics.</p>
+                    <div class="game-tags">
+                        <span class="tag">WebGL</span>
+                        <span class="tag">Arcade</span>
+                        <span class="tag">Retro</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <p>Ready to create something amazing together? Let's harness the speed force and build your next gaming masterpiece!</p>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-input" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" placeholder="your.email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-input form-textarea" placeholder="Tell me about your gaming vision..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Lightning Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#" class="social-link">📧</a>
+            <a href="#" class="social-link">📱</a>
+            <a href="#" class="social-link">💼</a>
+            <a href="#" class="social-link">🎮</a>
+        </div>
+        <p>&copy; 2025 Flash Gaming Portfolio. Built at lightning speed.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileMenu.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Speed lines animation
+        function createSpeedLine() {
+            const speedLine = document.createElement('div');
+            speedLine.className = 'speed-line';
+            speedLine.style.top = Math.random() * 100 + 'vh';
+            speedLine.style.width = Math.random() * 200 + 50 + 'px';
+            speedLine.style.animationDelay = Math.random() * 2 + 's';
+            speedLine.style.animationDuration = (Math.random() * 0.5 + 0.3) + 's';
+            
+            document.getElementById('speedLines').appendChild(speedLine);
+            
+            setTimeout(() => {
+                speedLine.remove();
+            }, 1000);
+        }
+
+        // Create speed lines periodically
+        setInterval(createSpeedLine, 300);
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Game card hover effects
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Message sent at lightning speed! ⚡');
+        });
+
+        // Add some interactive particles on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.95) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.left = e.clientX + 'px';
+                particle.style.top = e.clientY + 'px';
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                particle.style.background = '#fbbf24';
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '999';
+                particle.style.animation = 'fadeOut 0.5s ease-out forwards';
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 500);
+            }
+        });
+
+        // Add fadeOut animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                0% { opacity: 1; transform: scale(1); }
+                100% { opacity: 0; transform: scale(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
