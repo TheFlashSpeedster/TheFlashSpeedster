@@ -232,6 +232,11 @@ main {
 .project-card a {
     color: var(--accent);
     font-weight: 600;
+    text-decoration: none;
+}
+
+.project-card a:hover {
+    color: yellow;
 }
 
 /* SKILLS ------------------------------------------------------ */
