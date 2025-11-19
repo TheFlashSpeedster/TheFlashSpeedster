@@ -1,16 +1,50 @@
-## Hi there 👋
+# ATUL KUMAR
 
-<!--
-**TheFlashSpeedster/TheFlashSpeedster** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+**Email:** atulk5137@gmail.com | **Phone:** 8989898989  
+**Location:** Phagwara, Punjab, India  
+**GitHub:** github.com/TheFlashSpeedster
 
-Here are some ideas to get you started:
+---
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## EDUCATION
+
+**Bachelor of Technology in Computer Science and Engineering**  
+Lovely Professional University, Phagwara, Punjab  
+*Expected Graduation: 2029* | **CGPA: 8.0/10**
+
+---
+
+## TECHNICAL SKILLS
+
+**Programming Languages:** Python, JavaScript, HTML, CSS  
+**Tools & Technologies:** Git, GitHub, VS Code  
+**Languages:** English, Hindi
+
+---
+
+## PROJECTS
+
+**Myntra Clone**
+- Developed a pixel-perfect visual replica of Myntra's homepage demonstrating frontend development skills
+- Implemented responsive design using HTML and CSS to ensure cross-device compatibility
+- Focused on UI/UX principles to recreate an e-commerce interface
+
+**JavaScript Calculator**
+- Built a functional calculator application using vanilla JavaScript
+- Implemented core arithmetic operations and interactive user interface
+- Applied DOM manipulation techniques for real-time calculation display
+
+---
+
+## CERTIFICATIONS
+
+**Time Management Course**  
+*Completed professional development course in time management and productivity*
+
+---
+
+## ADDITIONAL INFORMATION
+
+- Actively building projects and maintaining code repositories on GitHub
+- Passionate about learning full-stack development and exploring new technologies
+- Strong problem-solving abilities and eagerness to contribute to collaborative projects
