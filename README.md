@@ -6,6 +6,34 @@
 
 ---
 
+## PROJECT STRUCTURE
+
+```
+TheFlashSpeedster/
+├── public/
+│   └── index.html
+├── src/
+│   ├── assets/
+│   │   ├── documents/
+│   │   │   └── time.management.pdf
+│   │   └── images/
+│   │       ├── calculator.png
+│   │       ├── cricket.png
+│   │       └── myntra.png
+│   ├── pages/
+│   │   └── resume.html
+│   ├── scripts/
+│   │   └── main.js
+│   └── styles/
+│       ├── main.css
+│       └── resume.css
+└── README.md
+```
+
+Open `public/index.html` for the landing page and `src/pages/resume.html` for the detailed resume view during development.
+
+---
+
 ## EDUCATION
 
 **Bachelor of Technology in Computer Science and Engineering**  
