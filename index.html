@@ -1,121 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="icon" href="/assets/images/icon.png">
-    <title>The Flash</title>
-    <link rel="stylesheet" href="/styles/main.css">
-    <script src="https://kit.fontawesome.com/d7f0ad760c.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Flash | Speedster Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Portfolio of The Flash - Full Stack Developer & Speedster">
 </head>
 <body>
-    <header>
-        <nav class="nav" aria-label="Primary">
-            <a href="#home" class="logo" aria-current="page">The Flash</a>
-            <ul class="nav-list">
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="/pages/resume.html" rel="noopener">Resume</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="lightning-container"></div>
+    
+    <nav class="navbar">
+        <div class="logo">FLASH<span class="bolt">⚡</span></div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">Origin</a></li>
+            <li><a href="#projects">Missions</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <main id="home">
-        <section class="hero" aria-labelledby="hero-heading">
-            <div class="hero-inner">
-                <img id="pfp" src="/assets/images/flash.png" alt="pfp" class="profile-photo">
-                <div class="intro">
-                    <h1 id="hero-heading">The Flash</h1>
-                    <p>Building fast, accessible, and maintainable web experiences with HTML, CSS and JavaScript. I turn ideas into polished interfaces.</p>
-                    <p>
-                        <a class="btn" href="https://github.com/TheFlashSpeedster">View on GitHub</a>
-                        <a class="btn outline" href="#contact">Contact Me</a>
-                    </p>
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1 class="glitch-text" data-text="THE FLASH">THE FLASH</h1>
+                <p class="subtitle">The Fastest Developer Alive</p>
+                <div class="cta-group">
+                    <a href="#projects" class="btn primary-btn">View Projects</a>
+                    <a href="#contact" class="btn secondary-btn">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="speed-lines"></div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h2 class="section-title">Origin <span class="highlight">Story</span></h2>
+            <div class="about-container">
+                <div class="about-text">
+                    <p>My name is The Flash. And I am the fastest developer alive. To the outside world, I'm just an ordinary coder, but secretly I use my speed to build high-performance web applications and solve complex algorithms in milliseconds.</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card">JavaScript</div>
+                    <div class="skill-card">React</div>
+                    <div class="skill-card">Node.js</div>
+                    <div class="skill-card">Python</div>
+                    <div class="skill-card">CSS3</div>
+                    <div class="skill-card">HTML5</div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="section" aria-labelledby="projects-heading">
-            <h2 id="projects-heading">Projects</h2>
-            <div class="projects-grid">
-                <article class="project-card" aria-labelledby="p1">
-                    <img src="/assets/images/myntra.svg">
-                    <h3 id="p1">Myntra Clone</h3>
-                    <p>Developed a pixel-perfect visual replica of Myntra's homepage demonstrating frontend development skills.</p>
-                    <p><a href="https://css-azure.vercel.app/Projects/Myntra-Clone/index.html" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a> · <a href="#" target="_blank" rel="noopener"><i class="fa-solid fa-code"></i> Source</a></p>
-                </article>
-
-                <article class="project-card" aria-labelledby="p2">
-                    <img src="/assets/images/calculator.png">
-                    <h3 id="p2">Web Calculator</h3>
-                    <p>Built a simple functional calculator application using vanilla JavaScript.</p>
-                    <p><a href="https://javascript-flash.vercel.app/Projects/1.%20Calculator/index.html" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a> · <a href="#" target="_blank" rel="noopener"><i class="fa-solid fa-code"></i> Source</a></p>
-                </article>
-
-                <article class="project-card" aria-labelledby="p3">
-                    <img src="/assets/images/cricket.png">
-                    <h3 id="p3">Cricket Game</h3>
-                    <p>This is a simple browser-based cricket game where you play quick matches by batting and bowling with instant results and live score updates.</p>
-                    <p><a href="https://javascript-flash.vercel.app/Projects/3.%20Cricket%20Game/index.html" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a> · <a href="#" target="_blank" rel="noopener"><i class="fa-solid fa-code"></i> Source</a></p>
-                </article>
+        <section id="projects" class="section">
+            <h2 class="section-title">Speed Force <span class="highlight">Missions</span></h2>
+            <div class="projects-grid" id="projects-grid">
+                <!-- Projects will be injected via JS -->
             </div>
         </section>
 
-        <section id="skills" class="section" aria-labelledby="skills-heading">
-            <h2 id="skills-heading">Skills</h2>
-            <ul class="skills-list">
-                <li><i class="fa-brands fa-html5"></i> HTML5</li>
-                <li><i class="fa-brands fa-css"></i> CSS</li>
-                <li><i class="fa-brands fa-js"></i> JavaScript</li>
-                <li><i class="fa-brands fa-python"></i> Python</li>
-            </ul>
-        </section>
-
-        <section id="contact" class="section" aria-labelledby="contact-heading">
-            <h2 id="contact-heading">Contact</h2>
-            <p>Want to work together or just say hi? Email: <a href="mailto:atul@example.com">atulk5137@gmail.com</a></p>
-
-            <form class="contact-form" action="#" method="post" novalidate>
-                <div class="form-row">
-                    <label for="name">Name</label>
-                    <input id="name" name="name" type="text" required />
-                </div>
-
-                <div class="form-row">
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" required />
-                </div>
-
-                <div class="form-row">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-
-                <button type="submit" class="btn">Send Message</button>
-            </form>
+        <section id="contact" class="section">
+            <h2 class="section-title">Send a <span class="highlight">Signal</span></h2>
+            <div class="social-links">
+                <a href="https://github.com/TheFlashSpeedster" target="_blank" class="social-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <!-- Add more socials here if provided -->
+            </div>
         </section>
     </main>
 
-    <footer class="site-footer" role="contentinfo">
-        <div class="container">
-            <p>© <span id="year"></span> The Flash</p>
-            <p>
-                <a href="https://github.com/TheFlashSpeedster" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a> ·
-                <a href="https://linkedin.com/TheFlashSpeedster" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            </p>
-        </div>
+    <footer>
+        <p>© 2026 The Flash. Powered by Speed Force.</p>
     </footer>
 
-    <script>
-        // small enhancement: display current year
-        document.getElementById('year').textContent = new Date().getFullYear();
-        // progressive enhancement: basic client-side form handling
-        document.querySelector('.contact-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Thanks! Message sent successfully.');
-            this.reset();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
