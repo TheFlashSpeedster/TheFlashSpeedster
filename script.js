@@ -2,36 +2,61 @@ const projects = [
     {
         title: "PDF Maker",
         description: "A lightning-fast tool to convert images to PDF. Built for efficiency.",
-        link: "https://pdf-maker-flash.vercel.app/"
+        live: "https://pdf-maker-flash.vercel.app/",
+        source: "https://github.com/TheFlashSpeedster/PDF-Maker"
     },
     {
         title: "CGPA Calculator",
         description: "Calculate your academic speed (CGPA) with precision.",
-        link: "https://cgpa-calculator-flash.vercel.app/"
+        live: "https://cgpa-calculator-flash.vercel.app/",
+        source: "https://github.com/TheFlashSpeedster/CGPA-Calculator"
     },
     {
         title: "Air Purifier",
-        description: "Breathe easy with this smart monitoring application.",
-        link: "https://air-purifier-kappa.vercel.app/"
+        description: "Simulation showing the working of an Air Purifier",
+        live: "https://air-purifier-kappa.vercel.app/",
+        source: "https://github.com/TheFlashSpeedster/Air-Purifier"
     },
     {
         title: "Todo List",
-        description: "Keep track of your missions and daily tasks.",
-        link: "https://todo-list-mu-neon-58.vercel.app/"
+        description: "Keep track of your projects and daily tasks.",
+        live: "https://todo-list-mu-neon-58.vercel.app/",
+        source: "https://github.com/TheFlashSpeedster/ToDo-List"
     },
     {
         title: "ACE Index Generator",
-        description: "Advanced computational engine for index generation.",
-        link: "https://index.ace-ml.eu.org/"
+        description: "Generate Direct Download Link for Any Google Drive File",
+        live: "https://index.ace-ml.eu.org/",
+        source: null
     },
     {
         title: "Youtube Downloader",
-        description: "Ongoing Project. Downloading content at super speed.",
-        link: "https://github.com/TheFlashSpeedster/Youtube-Downloader"
+        description: "Ongoing Project. Downloading content at super speed. Free & Unlimited",
+        live: null,
+        source: null
+    }
+];
+
+const ongoingProjects = [
+    {
+        title: "Youtube Downloader",
+        description: "Lightning-fast downloads with a clean UI.",
+        status: "Ongoing"
+    },
+    {
+        title: "Flash Analytics",
+        description: "Real-time dashboards with speed-first design.",
+        status: "Upcoming"
+    },
+    {
+        title: "Speed Notes",
+        description: "Minimal notes app with instant sync.",
+        status: "Upcoming"
     }
 ];
 
 const projectsGrid = document.getElementById('projects-grid');
+const ongoingGrid = document.getElementById('ongoing-grid');
 
 function renderProjects() {
     projectsGrid.innerHTML = projects.map(project => `
@@ -39,8 +64,30 @@ function renderProjects() {
             <div class="project-content">
                 <h3 class="project-title">${project.title}</h3>
                 <p class="project-desc">${project.description}</p>
-                <a href="${project.link}" target="_blank" class="project-link">Launch Mission &rarr;</a>
+                <div class="project-actions">
+                    <a href="${project.live || '#'}" target="_blank" class="project-btn ${project.live ? '' : 'is-disabled'}" ${project.live ? '' : 'aria-disabled="true"'}>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        Live
+                    </a>
+                    <a href="${project.source || '#'}" target="_blank" class="project-btn secondary ${project.source ? '' : 'is-disabled'}" ${project.source ? '' : 'aria-disabled="true"'}>
+                        <i class="fa-brands fa-github"></i>
+                        Source
+                    </a>
+                </div>
             </div>
+        </div>
+    `).join('');
+}
+
+function renderOngoing() {
+    if (!ongoingGrid) return;
+    ongoingGrid.innerHTML = ongoingProjects.map(item => `
+        <div class="ongoing-card">
+            <div class="ongoing-header">
+                <h3 class="ongoing-title">${item.title}</h3>
+                <span class="ongoing-badge ${item.status === 'Ongoing' ? 'is-ongoing' : 'is-upcoming'}">${item.status}</span>
+            </div>
+            <p class="ongoing-desc">${item.description}</p>
         </div>
     `).join('');
 }
@@ -80,4 +127,5 @@ function createLightning(x, y) {
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
+    renderOngoing();
 });
