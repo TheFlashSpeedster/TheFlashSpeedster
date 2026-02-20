@@ -1,5 +1,5 @@
 # 💫 About Me:
-🔭 I’m currently working on Personal Projects<br>👯 I’m looking to collaborate on My Projects<br>🌱 I’m currently learning C++ and PostgreSQL<br>💬 Ask me about anything<br>⚡ Fun fact
+🔭 I’m currently working on Personal Projects<br>👯 I’m looking to collaborate on My Projects<br>🌱 I’m currently learning DSA with C++ and DBMS with PostgreSQL<br>💬 Ask me about anything<br>⚡ Fun fact
 
 
 ## 🌐 Socials:
