@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Flash</title>
+    <title>Atul Kumar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Russo+One&family=Sora:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="/assets/images/flash2.png" type="image/x-icon">
-    <meta name="description" content="Portfolio of The Flash">
+    <meta name="description" content="Portfolio of Atul Kumar">
 </head>
 <body>
     <div class="lightning-container"></div>
     
     <nav class="navbar">
-        <div class="logo">THE FLASH<span class="bolt">⚡</span></div>
+        <div class="logo">Atul Kumar<span class="bolt">⚡</span></div>
         <ul class="nav-links">
             <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Origin</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -28,15 +30,35 @@
     <main>
         <section id="hero" class="hero-section">
             <div class="hero-content">
-                <h1 class="glitch-text" data-text="THE FLASH">THE FLASH</h1>
-                <p class="subtitle">Fast. Clean. Lightning.</p>
-                <div class="cta-group">
-                    <a href="#projects" class="btn primary-btn">Projects</a>
-                    <a href="#contact" class="btn secondary-btn">Signal</a>
+                <h1 class="glitch-text" data-text="WELCOME">WELCOME</h1>
+                <p class="subtitle">Atul Kumar | Developer Portfolio</p>
+                <p class="hero-summary">
+                    Building clean, fast, and user-friendly web experiences. Connect with me on the platforms below.
+                </p>
+                <div class="hero-socials">
+                    <a href="https://github.com/TheFlashSpeedster" target="_blank" class="hero-social-link" rel="noopener noreferrer">
+                        <i class="fa-brands fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="hero-social-link" rel="noopener noreferrer">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="mailto:yourname@example.com" class="hero-social-link">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://t.me/yourusername" target="_blank" class="hero-social-link" rel="noopener noreferrer">
+                        <i class="fa-brands fa-telegram"></i>
+                        <span>Telegram</span>
+                    </a>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="speed-lines"></div>
+                <div class="hero-photo-card">
+                    <img src="assets/images/flash.png" alt="Atul Kumar profile photo" class="hero-photo">
+                    <p class="hero-photo-label">My Photo</p>
+                </div>
             </div>
         </section>
 
@@ -48,19 +70,103 @@
         </section>
 
         <section id="about" class="section">
-            <h2 class="section-title">Origin <span class="highlight">Story</span></h2>
+            <h2 class="section-title">About <span class="highlight">Me</span></h2>
             <div class="about-container">
-                <div class="about-text">
-                    <p>Fast builds. Clean code. Lightning UX.</p>
+                <div class="about-text info-panel">
+                    <h3 class="panel-title">Details About Me</h3>
+                    <p class="panel-subtitle">Software Developer / Student / Problem Solver</p>
+                    <p>
+                        I am a passionate developer who enjoys building practical projects and learning by creating real applications.
+                        I like working on web interfaces, improving user experience, and turning ideas into clean, working products.
+                    </p>
+                    <p>
+                        My focus is on writing understandable code, learning modern development tools, and continuously improving my
+                        problem-solving skills through projects, practice, and collaboration.
+                    </p>
+                    <p>
+                        I am currently looking for opportunities to grow as a developer through internships, freelance work,
+                        and open-source contributions.
+                    </p>
                 </div>
-                <div class="skills-grid">
-                    <div class="skill-card"><i class="fa-brands fa-js skill-icon icon-js"></i><span>JavaScript</span></div>
-                    <div class="skill-card"><i class="fa-brands fa-c skill-icon icon-c"></i><span>C</span></div>
-                    <div class="skill-card"><i class="fa-brands fa-cuttlefish skill-icon icon-cpp"></i><span>C++</span></div>
-                    <div class="skill-card"><i class="fa-brands fa-python skill-icon icon-python"></i><span>Python</span></div>
-                    <div class="skill-card"><i class="fa-brands fa-css3-alt skill-icon icon-css"></i><span>CSS3</span></div>
-                    <div class="skill-card"><i class="fa-brands fa-html5 skill-icon icon-html"></i><span>HTML5</span></div>
+                <div class="quick-facts">
+                    <div class="fact-item">
+                        <span class="fact-label">Location</span>
+                        <span class="fact-value">Your City, State</span>
+                    </div>
+                    <div class="fact-item">
+                        <span class="fact-label">Interests</span>
+                        <span class="fact-value">Web Development, UI Design, Coding Challenges</span>
+                    </div>
+                    <div class="fact-item">
+                        <span class="fact-label">Goal</span>
+                        <span class="fact-value">Build impactful products and grow as a full-stack developer</span>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2 class="section-title">My Skills / <span class="highlight">Programming Languages</span></h2>
+            <p class="section-subtitle">Generic placeholder skills. Replace these with your actual stack.</p>
+            <div class="skills-grid">
+                <div class="skill-card"><i class="fa-brands fa-js skill-icon icon-js"></i><span>JavaScript</span></div>
+                <div class="skill-card"><i class="fa-brands fa-c skill-icon icon-c"></i><span>C</span></div>
+                <div class="skill-card"><i class="fa-brands fa-cuttlefish skill-icon icon-cpp"></i><span>C++</span></div>
+                <div class="skill-card"><i class="fa-brands fa-python skill-icon icon-python"></i><span>Python</span></div>
+                <div class="skill-card"><i class="fa-brands fa-css3-alt skill-icon icon-css"></i><span>CSS3</span></div>
+                <div class="skill-card"><i class="fa-brands fa-html5 skill-icon icon-html"></i><span>HTML5</span></div>
+                <div class="skill-card"><i class="fa-brands fa-git-alt skill-icon"></i><span>Git / GitHub</span></div>
+                <div class="skill-card"><i class="fa-solid fa-database skill-icon"></i><span>SQL / Databases</span></div>
+                <div class="skill-card"><i class="fa-solid fa-code skill-icon"></i><span>DSA / Problem Solving</span></div>
+            </div>
+            <div class="chips">
+                <span class="chip">React (Placeholder)</span>
+                <span class="chip">Node.js (Placeholder)</span>
+                <span class="chip">REST APIs (Placeholder)</span>
+                <span class="chip">UI/UX Basics (Placeholder)</span>
+                <span class="chip">Testing (Placeholder)</span>
+            </div>
+        </section>
+
+        <section id="certifications" class="section">
+            <h2 class="section-title">Certifications <span class="highlight">(Certificates)</span></h2>
+            <div class="resume-grid">
+                <article class="resume-card">
+                    <h3>Web Development Fundamentals</h3>
+                    <p class="card-meta">Provider: Example Learning Platform</p>
+                    <p class="card-meta">Issued: Jan 2026 | Credential ID: CERT-0001</p>
+                    <p>Placeholder certificate entry for frontend/web development basics.</p>
+                    <div class="project-actions">
+                        <a href="https://example.com/verify/CERT-0001" target="_blank" rel="noopener noreferrer" class="project-btn">
+                            <i class="fa-solid fa-link"></i>
+                            Verification
+                        </a>
+                    </div>
+                </article>
+                <article class="resume-card">
+                    <h3>Programming in Python</h3>
+                    <p class="card-meta">Provider: Example Academy</p>
+                    <p class="card-meta">Issued: Oct 2025 | Credential ID: CERT-0002</p>
+                    <p>Placeholder certificate entry for Python, scripting, and automation.</p>
+                    <div class="project-actions">
+                        <a href="https://example.com/verify/CERT-0002" target="_blank" rel="noopener noreferrer" class="project-btn">
+                            <i class="fa-solid fa-link"></i>
+                            Verification
+                        </a>
+                    </div>
+                </article>
+                <article class="resume-card">
+                    <h3>Data Structures &amp; Algorithms</h3>
+                    <p class="card-meta">Provider: Example Institute</p>
+                    <p class="card-meta">Issued: Jun 2025 | Credential ID: CERT-0003</p>
+                    <p>Placeholder certificate entry for DSA and coding problem-solving.</p>
+                    <div class="project-actions">
+                        <a href="https://example.com/verify/CERT-0003" target="_blank" rel="noopener noreferrer" class="project-btn">
+                            <i class="fa-solid fa-link"></i>
+                            Verification
+                        </a>
+                    </div>
+                </article>
             </div>
         </section>
 
@@ -71,9 +177,148 @@
             </div>
         </section>
 
+        <section id="experience" class="section">
+            <h2 class="section-title">Work <span class="highlight">Experience</span></h2>
+            <div class="timeline">
+                <article class="timeline-item">
+                    <div class="timeline-head">
+                        <div>
+                            <h3 class="timeline-role">Frontend Developer Intern (Placeholder)</h3>
+                            <p class="timeline-place">Company Name, City</p>
+                        </div>
+                        <span class="timeline-period">May 2025 - Jul 2025</span>
+                    </div>
+                    <ul class="timeline-list">
+                        <li>Built responsive pages and reusable UI components using HTML, CSS, and JavaScript.</li>
+                        <li>Collaborated with a small team to improve page performance and fix bugs.</li>
+                        <li>Added basic form validation and improved user experience for key workflows.</li>
+                    </ul>
+                </article>
+                <article class="timeline-item">
+                    <div class="timeline-head">
+                        <div>
+                            <h3 class="timeline-role">Freelance Web Developer (Placeholder)</h3>
+                            <p class="timeline-place">Self-Employed / Remote</p>
+                        </div>
+                        <span class="timeline-period">2024 - Present</span>
+                    </div>
+                    <ul class="timeline-list">
+                        <li>Created small websites and utility tools for clients and personal learning projects.</li>
+                        <li>Handled deployment, content updates, and maintenance for static web apps.</li>
+                        <li>Practiced version control workflows and documentation for project handoff.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="achievements" class="section">
+            <h2 class="section-title">Key <span class="highlight">Achievements</span></h2>
+            <div class="resume-grid">
+                <article class="resume-card">
+                    <h3>Hackathon Finalist (Placeholder)</h3>
+                    <p class="card-meta">2025 | College / Community Event</p>
+                    <p>Reached finals with a prototype project focused on usability and performance.</p>
+                </article>
+                <article class="resume-card">
+                    <h3>Coding Challenge Milestone</h3>
+                    <p class="card-meta">Platform: Example Coding Site</p>
+                    <p>Solved 300+ practice problems across arrays, strings, recursion, and graphs.</p>
+                </article>
+                <article class="resume-card">
+                    <h3>Open Source Contribution</h3>
+                    <p class="card-meta">Community Project (Placeholder)</p>
+                    <p>Submitted bug fixes, UI improvements, or documentation updates to a public project.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="extracurricular" class="section">
+            <h2 class="section-title">Extra-<span class="highlight">Curricular</span></h2>
+            <div class="resume-grid">
+                <article class="resume-card">
+                    <h3>Tech Club Member / Coordinator</h3>
+                    <p class="card-meta">Campus Community (Placeholder)</p>
+                    <p>Organized coding sessions, peer learning meetups, or workshop events.</p>
+                </article>
+                <article class="resume-card">
+                    <h3>Volunteer Activity</h3>
+                    <p class="card-meta">NGO / School / Local Event</p>
+                    <p>Participated in community support events, mentoring, or awareness campaigns.</p>
+                </article>
+                <article class="resume-card">
+                    <h3>Creative / Sports Interest</h3>
+                    <p class="card-meta">Personal Development</p>
+                    <p>Add hobbies like cricket, design, photography, public speaking, or music.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h2 class="section-title">Academic <span class="highlight">Education</span></h2>
+            <div class="timeline">
+                <article class="timeline-item">
+                    <div class="timeline-head">
+                        <div>
+                            <h3 class="timeline-role">B.Tech / B.E. in Computer Science (Placeholder)</h3>
+                            <p class="timeline-place">University Name, City</p>
+                        </div>
+                        <span class="timeline-period">2022 - 2026</span>
+                    </div>
+                    <ul class="timeline-list">
+                        <li>CGPA: 8.5/10 (Placeholder)</li>
+                        <li>Relevant coursework: DSA, DBMS, OS, Computer Networks, Web Development</li>
+                        <li>Academic projects and workshops in software development</li>
+                    </ul>
+                </article>
+                <article class="timeline-item">
+                    <div class="timeline-head">
+                        <div>
+                            <h3 class="timeline-role">Senior Secondary (Class XII) (Placeholder)</h3>
+                            <p class="timeline-place">School Name, City</p>
+                        </div>
+                        <span class="timeline-period">2020 - 2022</span>
+                    </div>
+                    <ul class="timeline-list">
+                        <li>Stream: Science / PCM / Computer Science (Placeholder)</li>
+                        <li>Score: 85% (Placeholder)</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
         <section id="contact" class="section">
-            <h2 class="section-title">Send a <span class="highlight">Signal</span></h2>
-            <p class="section-subtitle">Pick a channel. Fast reply.</p>
+            <h2 class="section-title">Contact - <span class="highlight">links, phone, address</span></h2>
+            <p class="section-subtitle">Generic placeholder contact details. Replace with your real info.</p>
+            <div class="contact-details-grid">
+                <div class="contact-detail-card">
+                    <i class="fa-solid fa-user"></i>
+                    <div>
+                        <span class="contact-label">Name</span>
+                        <span class="contact-hint">Your Full Name</span>
+                    </div>
+                </div>
+                <div class="contact-detail-card">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-hint">+1 (000) 000-0000</span>
+                    </div>
+                </div>
+                <div class="contact-detail-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <span class="contact-label">Address</span>
+                        <span class="contact-hint">123 Main Street, City, State, ZIP</span>
+                    </div>
+                </div>
+                <div class="contact-detail-card">
+                    <i class="fa-solid fa-link"></i>
+                    <div>
+                        <span class="contact-label">Portfolio</span>
+                        <span class="contact-hint">https://your-portfolio.example</span>
+                    </div>
+                </div>
+            </div>
             <div class="contact-grid">
                 <a href="https://github.com/TheFlashSpeedster" target="_blank" class="contact-card">
                     <i class="fa-brands fa-github contact-icon icon-github"></i>
@@ -86,14 +331,21 @@
                     <i class="fa-solid fa-envelope contact-icon icon-email"></i>
                     <div>
                         <span class="contact-label">Email <span class="contact-status-dot" aria-label="Online"></span></span>
-                        <span class="contact-hint">contact@theflash.eu.org</span>
+                        <span class="contact-hint">yourname@example.com</span>
                     </div>
                 </a>
                 <a href="https://wa.me/0000000000" target="_blank" class="contact-card is-offline">
                     <i class="fa-brands fa-whatsapp contact-icon icon-whatsapp"></i>
                     <div>
                         <span class="contact-label">WhatsApp <span class="contact-status-dot" aria-label="Online"></span></span>
-                        <span class="contact-hint">Quick replies</span>
+                        <span class="contact-hint">+1 (000) 000-0000</span>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="contact-card">
+                    <i class="fa-brands fa-linkedin contact-icon"></i>
+                    <div>
+                        <span class="contact-label">LinkedIn <span class="contact-status-dot is-offline" aria-label="Offline"></span></span>
+                        <span class="contact-hint">linkedin.com/in/your-profile</span>
                     </div>
                 </a>
                 <!-- <a href="https://telegram.org/" target="_blank" class="contact-card">
@@ -122,7 +374,7 @@
     </main>
 
     <footer>
-        <p>© 2026 The Flash. Powered by Speed Force.</p>
+        <p>© 2026 Atul Kumar. Powered by Speed Force.</p>
     </footer>
 
     <script src="script.js"></script>
