@@ -21,7 +21,7 @@ body {
     background-color: var(--bg-dark);
     color: var(--text-white);
     overflow-x: hidden;
-    padding-top: var(--nav-height);
+    /* padding-top: var(--nav-height); */
     background-image: 
         radial-gradient(circle at 10% 20%, rgba(197, 26, 26, 0.15) 0%, transparent 40%),
         radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 40%);
@@ -38,7 +38,7 @@ h1, h2, h3, .logo {
     justify-content: space-between;
     align-items: center;
     padding: 1.1rem 5%;
-    position: fixed;
+    position: sticky;
     width: 100%;
     top: 0;
     z-index: 1000;
