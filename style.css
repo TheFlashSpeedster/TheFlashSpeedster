@@ -799,6 +799,53 @@ footer {
     50% { opacity: 0.35; box-shadow: 0 0 3px rgba(46, 204, 113, 0.4); }
 }
 
+/* Project header with date badge */
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-date {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: rgba(255, 215, 0, 0.06);
+    color: var(--flash-gold);
+    white-space: nowrap;
+}
+
+/* Tech stack chips on project cards */
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 1.2rem;
+}
+
+.tech-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-gray);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* Coding Profiles section */
+#coding-profiles .contact-icon {
+    background: rgba(255, 255, 255, 0.04);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     :root {

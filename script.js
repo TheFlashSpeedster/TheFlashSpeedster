@@ -1,57 +1,67 @@
 const projects = [
     {
-        title: "PDF Maker",
-        description: "A lightning-fast tool to convert images to PDF. Built for efficiency.",
-        live: "https://pdf-maker-flash.vercel.app/",
-        source: "https://github.com/TheFlashSpeedster/PDF-Maker"
+        title: "Anti-Theft Locker System",
+        description: "An interactive digital locker security interface with PIN/passcode verification, real-time status tracking, unauthorized access alerts, and security incident event logging.",
+        tech: ["HTML5", "CSS3", "JavaScript", "Web APIs", "Vercel"],
+        live: "https://anti-theft-locker-system.vercel.app/",
+        source: "https://github.com/TheFlashSpeedster/Anti-Theft-Locker-System",
+        date: "Feb 2026"
+    },
+    {
+        title: "Resume Parser",
+        description: "An NLP-driven resume parsing tool that automatically extracts contact details, technical skills, work history, and education from uploaded documents into structured JSON.",
+        tech: ["Python", "JavaScript", "NLP", "Regex", "HTML", "CSS", "Vercel"],
+        live: "https://resume-parser-flash.vercel.app/",
+        source: "https://github.com/TheFlashSpeedster/Resume-Parser",
+        date: "Jan 2026"
     },
     {
         title: "CGPA Calculator",
-        description: "Calculate your academic speed (CGPA) with precision.",
+        description: "A responsive web utility for LPU students to compute semester GPA and cumulative CGPA with dynamic subject/credit inputs, LocalStorage persistence, and zero-latency calculations.",
+        tech: ["HTML5", "CSS3", "JavaScript", "Vercel"],
         live: "https://cgpa-calculator-flash.vercel.app/",
-        source: "https://github.com/TheFlashSpeedster/CGPA-Calculator"
+        source: "https://github.com/TheFlashSpeedster/CGPA-Calculator",
+        date: "Dec 2025"
     },
     {
-        title: "Air Purifier",
-        description: "Simulation showing the working of an Air Purifier",
+        title: "PDF Maker",
+        description: "A lightning-fast tool to convert images to PDF with a clean, intuitive interface. Built for efficiency and speed.",
+        tech: ["HTML5", "CSS3", "JavaScript", "Vercel"],
+        live: "https://pdf-maker-flash.vercel.app/",
+        source: "https://github.com/TheFlashSpeedster/PDF-Maker",
+        date: null
+    },
+    {
+        title: "Air Purifier Simulation",
+        description: "An interactive simulation demonstrating the working mechanism of an Air Purifier with animated UI elements.",
+        tech: ["HTML5", "CSS3", "JavaScript"],
         live: "https://air-purifier-kappa.vercel.app/",
-        source: "https://github.com/TheFlashSpeedster/Air-Purifier"
+        source: "https://github.com/TheFlashSpeedster/Air-Purifier",
+        date: null
     },
     {
         title: "Todo List",
-        description: "Keep track of your projects and daily tasks.",
+        description: "A clean, minimal task management app to keep track of projects and daily tasks with local storage persistence.",
+        tech: ["HTML5", "CSS3", "JavaScript"],
         live: "https://todo-list-mu-neon-58.vercel.app/",
-        source: "https://github.com/TheFlashSpeedster/ToDo-List"
+        source: "https://github.com/TheFlashSpeedster/ToDo-List",
+        date: null
     },
     {
         title: "ACE Index Generator",
-        description: "Generate Direct Download Link for Any Google Drive File",
+        description: "Generate direct download links for any Google Drive file. A fast and reliable tool for file sharing.",
+        tech: ["Web APIs"],
         live: "https://index.ace-ml.eu.org/",
-        source: null
-    },
-    {
-        title: "Youtube Downloader",
-        description: "Ongoing Project. Downloading content at super speed. Free & Unlimited",
-        live: null,
-        source: null
+        source: null,
+        date: null
     }
 ];
 
 const ongoingProjects = [
     {
         title: "Youtube Downloader",
-        description: "Lightning-fast downloads with a clean UI.",
+        description: "Lightning-fast YouTube downloads with a clean UI. Free & Unlimited.",
         status: "Ongoing"
-    },
-    {
-        title: "Flash Analytics",
-        description: "Real-time dashboards with speed-first design.",
-        status: "Upcoming"
-    },
-    {
-        title: "Speed Notes",
-        description: "Minimal notes app with instant sync.",
-        status: "Upcoming"
     }
 ];
 
@@ -62,12 +72,16 @@ function renderProjects() {
     projectsGrid.innerHTML = projects.map(project => `
         <div class="project-card">
             <div class="project-content">
-                <h3 class="project-title">${project.title}</h3>
+                <div class="project-header">
+                    <h3 class="project-title">${project.title}</h3>
+                    ${project.date ? `<span class="project-date">${project.date}</span>` : ''}
+                </div>
                 <p class="project-desc">${project.description}</p>
+                ${project.tech ? `<div class="project-tech">${project.tech.map(t => `<span class="tech-chip">${t}</span>`).join('')}</div>` : ''}
                 <div class="project-actions">
                     <a href="${project.live || '#'}" target="_blank" class="project-btn ${project.live ? '' : 'is-disabled'}" ${project.live ? '' : 'aria-disabled="true"'}>
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        Live
+                        Live Demo
                     </a>
                     <a href="${project.source || '#'}" target="_blank" class="project-btn secondary ${project.source ? '' : 'is-disabled'}" ${project.source ? '' : 'aria-disabled="true"'}>
                         <i class="fa-brands fa-github"></i>
