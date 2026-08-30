@@ -4,65 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atul Kumar | Portfolio</title>
+    
+    <!-- Meta SEO -->
+    <meta name="description" content="Portfolio of Atul Kumar — Full-stack developer and Computer Science student at Lovely Professional University. Building clean, fast, and user-friendly web experiences.">
+    <meta name="keywords" content="Atul Kumar, TheFlashSpeedster, Portfolio, Full-Stack Developer, CSE Student, LPU, React, JavaScript, Python, Web Development">
+    <meta name="author" content="Atul Kumar">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Atul Kumar | Portfolio">
+    <meta property="og:description" content="Second-year CSE student at LPU. Building clean, fast, and user-friendly web experiences.">
+    <meta property="og:image" content="assets/images/flash.png">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Russo+One&family=Sora:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Russo+One&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="/assets/images/flash2.png" type="image/x-icon">
-    <meta name="description" content="Portfolio of Atul Kumar — Full-stack developer and Computer Science student at Lovely Professional University. Building clean, fast, and user-friendly web experiences.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/flash2.png" type="image/x-icon">
 </head>
 <body>
-    <div class="lightning-container"></div>
-    
-    <nav class="navbar">
-        <div class="logo">Atul Kumar<span class="bolt">⚡</span></div>
-        <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- Speed Force Background Canvas -->
+    <canvas id="speed-canvas"></canvas>
+
+    <!-- Speed Force Ambient Grid -->
+    <div class="speed-grid-overlay" aria-hidden="true"></div>
+    <div class="lightning-container" id="lightning-container" aria-hidden="true"></div>
+
+    <!-- Navigation Bar (Command HUD) -->
+    <header class="navbar-wrapper">
+        <nav class="navbar" id="navbar" aria-label="Main Navigation">
+            <a href="#hero" class="logo" aria-label="Atul Kumar Home">
+                <span class="logo-lightning">⚡</span>
+                <span class="logo-name">Atul Kumar</span>
+            </a>
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#hero" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#coding-profiles" class="nav-link">Profiles</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#certifications" class="nav-link">Certificates</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <button id="menu-toggle" class="menu-btn" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+            </button>
+        </nav>
+    </header>
 
     <main>
+        <!-- Hero Section -->
         <section id="hero" class="hero-section">
-            <div class="hero-content">
-                <h1 class="glitch-text" data-text="WELCOME">WELCOME</h1>
-                <p class="subtitle">Atul Kumar | Developer Portfolio</p>
-                <p class="hero-summary">
-                    Second-year CSE student at LPU. Building clean, fast, and user-friendly web experiences. Passionate about full-stack development and open-source contributions.
-                </p>
-                <div class="hero-socials">
-                    <a href="https://github.com/TheFlashSpeedster" target="_blank" class="hero-social-link" rel="noopener noreferrer">
-                        <i class="fa-brands fa-github"></i>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/atul-kumar-flash/" target="_blank" class="hero-social-link" rel="noopener noreferrer">
-                        <i class="fa-brands fa-linkedin"></i>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="mailto:atulk5137@gmail.com" class="hero-social-link">
-                        <i class="fa-solid fa-envelope"></i>
-                        <span>Email</span>
-                    </a>
+            <div class="hero-glow-blob hero-glow-1" aria-hidden="true"></div>
+            <div class="hero-glow-blob hero-glow-2" aria-hidden="true"></div>
 
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-greeting">
+                        <h1 class="glitch-title" data-text="WELCOME">WELCOME</h1>
+                        <p class="subtitle">Atul Kumar | Developer Portfolio</p>
+                    </div>
+
+                    <p class="hero-summary">
+                        Second-year CSE student at <strong>Lovely Professional University</strong> (CGPA: <strong>8.96</strong>). Building clean, fast, and user-friendly web experiences. Passionate about full-stack development and open-source contributions.
+                    </p>
+
+                    <!-- Hero Social Links Grid -->
+                    <div class="hero-socials">
+                        <a href="https://github.com/TheFlashSpeedster" target="_blank" rel="noopener noreferrer" class="hero-social-link">
+                            <i class="fa-brands fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/atul-kumar-flash/" target="_blank" rel="noopener noreferrer" class="hero-social-link">
+                            <i class="fa-brands fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="mailto:atulk5137@gmail.com" class="hero-social-link">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>Email</span>
+                        </a>
+                        <a href="https://wa.me/917367098488" target="_blank" rel="noopener noreferrer" class="hero-social-link">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Call To Actions -->
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>View Projects</span>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>Get In Touch</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-photo-card">
-                    <img src="assets/images/flash.png" alt="Atul Kumar profile photo" class="hero-photo">
-                    <p class="hero-photo-label">Atul Kumar</p>
+
+                <!-- Hero Visual: Flash Avatar Deck -->
+                <div class="hero-visual">
+                    <div class="hero-photo-card">
+                        <div class="energy-ring ring-outer"></div>
+                        <div class="energy-ring ring-inner"></div>
+                        <div class="photo-wrapper">
+                            <img src="assets/images/flash.png" alt="Atul Kumar profile photo" class="hero-photo">
+                        </div>
+                        <p class="hero-photo-label">Atul Kumar ⚡</p>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- About Me Section -->
+        <section id="about" class="section about-section">
+            <div class="section-header">
+                <h2 class="section-title">About <span class="highlight-crimson">Me</span></h2>
+            </div>
 
-
-        <section id="about" class="section">
-            <h2 class="section-title">About <span class="highlight">Me</span></h2>
             <div class="about-container">
                 <div class="about-text info-panel">
                     <h3 class="panel-title">Details About Me</h3>
@@ -80,58 +154,109 @@
                         and exciting collaborative projects.
                     </p>
                 </div>
+
                 <div class="quick-facts">
                     <div class="fact-item">
-                        <span class="fact-label">Location</span>
-                        <span class="fact-value">Phagwara, Punjab, India (LPU)</span>
+                        <div class="fact-icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <span class="fact-label">Location</span>
+                            <span class="fact-value">Phagwara, Punjab, India (LPU)</span>
+                        </div>
                     </div>
                     <div class="fact-item">
-                        <span class="fact-label">University</span>
-                        <span class="fact-value">Lovely Professional University — CGPA: 8.96</span>
+                        <div class="fact-icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div>
+                            <span class="fact-label">University</span>
+                            <span class="fact-value">Lovely Professional University — CGPA: <strong>8.96</strong></span>
+                        </div>
                     </div>
                     <div class="fact-item">
-                        <span class="fact-label">Interests</span>
-                        <span class="fact-value">Web Development, Full-Stack, Problem Solving</span>
+                        <div class="fact-icon-box"><i class="fa-solid fa-laptop-code"></i></div>
+                        <div>
+                            <span class="fact-label">Interests</span>
+                            <span class="fact-value">Web Development, Full-Stack, Problem Solving</span>
+                        </div>
                     </div>
                     <div class="fact-item">
-                        <span class="fact-label">Goal</span>
-                        <span class="fact-value">Build impactful products and grow as a full-stack developer</span>
+                        <div class="fact-icon-box"><i class="fa-solid fa-bullseye"></i></div>
+                        <div>
+                            <span class="fact-label">Goal</span>
+                            <span class="fact-value">Build impactful products and grow as a full-stack developer</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="section">
-            <h2 class="section-title">My Skills / <span class="highlight">Programming Languages</span></h2>
-            <p class="section-subtitle">Languages, frameworks, and tools I work with.</p>
-            <div class="skills-grid">
-                <div class="skill-card"><i class="fa-brands fa-js skill-icon icon-js"></i><span>JavaScript</span></div>
-                <div class="skill-card"><i class="fa-brands fa-c skill-icon icon-c"></i><span>C</span></div>
-                <div class="skill-card"><i class="fa-brands fa-cuttlefish skill-icon icon-cpp"></i><span>C++</span></div>
-                <div class="skill-card"><i class="fa-brands fa-python skill-icon icon-python"></i><span>Python</span></div>
-                <div class="skill-card"><i class="fa-brands fa-css3-alt skill-icon icon-css"></i><span>CSS3</span></div>
-                <div class="skill-card"><i class="fa-brands fa-html5 skill-icon icon-html"></i><span>HTML5</span></div>
-                <div class="skill-card"><i class="fa-brands fa-git-alt skill-icon"></i><span>Git / GitHub</span></div>
-                <div class="skill-card"><i class="fa-solid fa-database skill-icon"></i><span>PostgreSQL / SQL</span></div>
-                <div class="skill-card"><i class="fa-brands fa-react skill-icon" style="color:#61DBFB"></i><span>React.js</span></div>
-                <div class="skill-card"><i class="fa-brands fa-linux skill-icon"></i><span>Linux</span></div>
+        <!-- Skills Section -->
+        <section id="skills" class="section skills-section">
+            <div class="section-header">
+                <h2 class="section-title">My Skills / <span class="highlight-gold">Programming Languages</span></h2>
+                <p class="section-subtitle">Languages, frameworks, and tools I work with.</p>
             </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fa-brands fa-js skill-icon icon-js"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-c skill-icon icon-c"></i>
+                    <span>C</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-cuttlefish skill-icon icon-cpp"></i>
+                    <span>C++</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-python skill-icon icon-python"></i>
+                    <span>Python</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-css3-alt skill-icon icon-css"></i>
+                    <span>CSS3</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-html5 skill-icon icon-html"></i>
+                    <span>HTML5</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-git-alt skill-icon icon-git"></i>
+                    <span>Git / GitHub</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-database skill-icon icon-db"></i>
+                    <span>PostgreSQL / SQL</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-react skill-icon icon-react"></i>
+                    <span>React.js</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-linux skill-icon icon-linux"></i>
+                    <span>Linux</span>
+                </div>
+            </div>
+
             <div class="chips">
-                <span class="chip">React.js</span>
-                <span class="chip">Vite</span>
-                <span class="chip">Tailwind CSS</span>
-                <span class="chip">PostgreSQL</span>
-                <span class="chip">Web APIs</span>
-                <span class="chip">NLP / Regex</span>
-                <span class="chip">VS Code</span>
-                <span class="chip">Vercel</span>
+                <span class="chip"><i class="fa-brands fa-react"></i> React.js</span>
+                <span class="chip"><i class="fa-solid fa-bolt"></i> Vite</span>
+                <span class="chip"><i class="fa-brands fa-css3"></i> Tailwind CSS</span>
+                <span class="chip"><i class="fa-solid fa-database"></i> PostgreSQL</span>
+                <span class="chip"><i class="fa-solid fa-network-wired"></i> Web APIs</span>
+                <span class="chip"><i class="fa-solid fa-brain"></i> NLP / Regex</span>
+                <span class="chip"><i class="fa-solid fa-terminal"></i> VS Code</span>
+                <span class="chip"><i class="fa-solid fa-cloud"></i> Vercel</span>
             </div>
         </section>
 
         <!-- Coding Profiles Section -->
-        <section id="coding-profiles" class="section">
-            <h2 class="section-title">Coding <span class="highlight">Profiles</span></h2>
-            <p class="section-subtitle">Where I practice, compete, and contribute.</p>
+        <section id="coding-profiles" class="section coding-section">
+            <div class="section-header">
+                <h2 class="section-title">Coding <span class="highlight-gold">Profiles</span></h2>
+                <p class="section-subtitle">Where I practice, compete, and contribute.</p>
+            </div>
+
             <div class="contact-grid">
                 <a href="https://github.com/TheFlashSpeedster" target="_blank" rel="noopener noreferrer" class="contact-card">
                     <i class="fa-brands fa-github contact-icon icon-github"></i>
@@ -162,7 +287,7 @@
                     </div>
                 </a>
                 <a href="https://www.hackerearth.com/@atulk5137/" target="_blank" rel="noopener noreferrer" class="contact-card">
-                    <i class="fa-solid fa-earth-asia contact-icon" style="color:#2C3E8C"></i>
+                    <i class="fa-solid fa-earth-asia contact-icon" style="color:#5C7CFA"></i>
                     <div>
                         <span class="contact-label">HackerEarth</span>
                         <span class="contact-hint">@atulk5137</span>
@@ -178,35 +303,56 @@
             </div>
         </section>
 
-        <section id="certifications" class="section">
-            <h2 class="section-title">Certifications <span class="highlight">(Certificates)</span></h2>
+        <!-- Projects Section -->
+        <section id="projects" class="section projects-section">
+            <div class="section-header">
+                <h2 class="section-title">Flash <span class="highlight-crimson">Projects</span></h2>
+                <p class="section-subtitle">Real-world applications and web tools.</p>
+            </div>
+
+            <div class="projects-grid" id="projects-grid">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <!-- Ongoing Projects Sub-section -->
+            <div class="ongoing-section">
+                <h3 class="ongoing-heading">Ongoing <span class="highlight-gold">Projects</span></h3>
+                <div class="ongoing-grid" id="ongoing-grid">
+                    <!-- Injected via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="section cert-section">
+            <div class="section-header">
+                <h2 class="section-title">Certifications <span class="highlight-crimson">(Certificates)</span></h2>
+            </div>
+
             <div class="resume-grid">
                 <article class="resume-card">
-                    <h3>Time Management Course</h3>
-                    <p class="card-meta">Provider: TECH VEDA</p>
-                    <p class="card-meta">Issued: 29 Sep 2025</p>
+                    <div class="resume-card-top">
+                        <i class="fa-solid fa-stopwatch card-icon"></i>
+                        <h3>Time Management Course</h3>
+                    </div>
+                    <p class="card-meta"><strong>Provider:</strong> TECH VEDA &bull; <strong>Issued:</strong> 29 Sep 2025</p>
                     <p>Completed a professional time management course focused on productivity strategies, prioritization techniques, and efficient task scheduling.</p>
                     <div class="project-actions">
-                        <a href="https://theflash.eu.org/assets/documents/time-management-cert.pdf" target="_blank" rel="noopener noreferrer" class="project-btn">
-                            <i class="fa-solid fa-link"></i>
-                            View Certificate
+                        <a href="assets/docs/time-management-cert.pdf" target="_blank" rel="noopener noreferrer" class="project-btn">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <span>View Certificate</span>
                         </a>
                     </div>
                 </article>
             </div>
         </section>
 
-        <section id="projects" class="section">
-            <h2 class="section-title">Flash <span class="highlight">Projects</span></h2>
-            <div class="projects-grid" id="projects-grid">
-                <!-- Projects will be injected via JS -->
+        <!-- Education Section -->
+        <section id="education" class="section edu-section">
+            <div class="section-header">
+                <h2 class="section-title">Academic <span class="highlight-gold">Education</span></h2>
             </div>
-        </section>
 
-
-
-        <section id="education" class="section">
-            <h2 class="section-title">Academic <span class="highlight">Education</span></h2>
             <div class="timeline">
                 <article class="timeline-item">
                     <div class="timeline-head">
@@ -222,6 +368,7 @@
                         <li>Actively building full-stack projects and contributing to open-source</li>
                     </ul>
                 </article>
+
                 <article class="timeline-item">
                     <div class="timeline-head">
                         <div>
@@ -234,6 +381,7 @@
                         <li>Percentage: <strong>88%</strong></li>
                     </ul>
                 </article>
+
                 <article class="timeline-item">
                     <div class="timeline-head">
                         <div>
@@ -249,9 +397,13 @@
             </div>
         </section>
 
-        <section id="contact" class="section">
-            <h2 class="section-title">Contact — <span class="highlight">Get in Touch</span></h2>
-            <p class="section-subtitle">Feel free to reach out for collaborations, opportunities, or just a chat.</p>
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="section-header">
+                <h2 class="section-title">Contact — <span class="highlight-crimson">Get in Touch</span></h2>
+                <p class="section-subtitle">Feel free to reach out for collaborations, opportunities, or just a chat.</p>
+            </div>
+
             <div class="contact-details-grid">
                 <div class="contact-detail-card">
                     <i class="fa-solid fa-user"></i>
@@ -278,10 +430,11 @@
                     <i class="fa-solid fa-link"></i>
                     <div>
                         <span class="contact-label">Website</span>
-                        <span class="contact-hint"><a href="https://theflash.eu.org" target="_blank" rel="noopener noreferrer" style="color:inherit">theflash.eu.org</a></span>
+                        <span class="contact-hint"><a href="https://theflash.eu.org" target="_blank" rel="noopener noreferrer">theflash.eu.org</a></span>
                     </div>
                 </div>
             </div>
+
             <div class="contact-grid">
                 <a href="https://github.com/TheFlashSpeedster" target="_blank" class="contact-card" rel="noopener noreferrer">
                     <i class="fa-brands fa-github contact-icon icon-github"></i>
@@ -305,21 +458,37 @@
                     </div>
                 </a>
                 <a href="https://www.linkedin.com/in/atul-kumar-flash/" target="_blank" class="contact-card" rel="noopener noreferrer">
-                    <i class="fa-brands fa-linkedin contact-icon"></i>
+                    <i class="fa-brands fa-linkedin contact-icon icon-linkedin"></i>
                     <div>
                         <span class="contact-label">LinkedIn</span>
                         <span class="contact-hint">atul-kumar-flash</span>
                     </div>
                 </a>
-
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <p>© 2026 Atul Kumar. Powered by Speed Force.</p>
+        <div class="footer-content">
+            <p>© 2026 Atul Kumar. Powered by Speed Force.</p>
+            <a href="#hero" class="back-to-top" aria-label="Back to Top"><i class="fa-solid fa-arrow-up"></i> Top</a>
+        </div>
     </footer>
 
+    <!-- Floating Scroll-To-Top Speedometer -->
+    <button id="floating-speedometer" class="floating-speedometer" type="button" aria-label="Scroll to top">
+        <svg class="speedometer-svg" viewBox="0 0 100 100">
+            <circle class="speedometer-track" cx="50" cy="50" r="42" />
+            <circle class="speedometer-progress" id="scroll-progress-circle" cx="50" cy="50" r="42" />
+        </svg>
+        <span class="speedometer-icon">⚡</span>
+    </button>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Main JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
