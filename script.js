@@ -60,35 +60,15 @@ const projects = [
         live: "https://todo-list-mu-neon-58.vercel.app/",
         source: "https://github.com/TheFlashSpeedster/ToDo-List",
         date: null
-    },
-    {
-        title: "ACE Index Generator",
-        description: "Generate direct download links for any Google Drive file. A fast and reliable tool for file sharing.",
-        tech: ["Web APIs"],
-        live: "https://index.ace-ml.eu.org/",
-        source: null,
-        date: null
     }
 ];
 
-const ongoingProjects = [
-    {
-        title: "Youtube Downloader",
-        description: "Lightning-fast YouTube downloads with a clean UI. Free & Unlimited.",
-        status: "Ongoing"
-    }
-];
-
-/* --------------------------------------------------------------------------
-   2. DOM References
-   -------------------------------------------------------------------------- */
 const dom = {
     navbar: document.getElementById('navbar'),
     navMenu: document.getElementById('nav-menu'),
     menuToggle: document.getElementById('menu-toggle'),
     navLinks: document.querySelectorAll('.nav-link'),
     projectsGrid: document.getElementById('projects-grid'),
-    ongoingGrid: document.getElementById('ongoing-grid'),
     speedometer: document.getElementById('floating-speedometer'),
     progressCircle: document.getElementById('scroll-progress-circle'),
     speedCanvas: document.getElementById('speed-canvas')
@@ -215,7 +195,7 @@ class SpeedCanvasEngine {
 }
 
 /* --------------------------------------------------------------------------
-   4. Render Projects & Ongoing Projects
+   4. Render Projects
    -------------------------------------------------------------------------- */
 function renderProjects() {
     if (!dom.projectsGrid) return;
@@ -244,20 +224,6 @@ function renderProjects() {
                     </a>
                 </div>
             </div>
-        </div>
-    `).join('');
-}
-
-function renderOngoing() {
-    if (!dom.ongoingGrid) return;
-    
-    dom.ongoingGrid.innerHTML = ongoingProjects.map(item => `
-        <div class="ongoing-card">
-            <div class="ongoing-header">
-                <h3 class="ongoing-title">${item.title}</h3>
-                <span class="ongoing-badge ${item.status === 'Ongoing' ? 'is-ongoing' : 'is-upcoming'}">${item.status}</span>
-            </div>
-            <p class="ongoing-desc">${item.description}</p>
         </div>
     `).join('');
 }
@@ -397,7 +363,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderProjects();
-    renderOngoing();
     initNavigation();
 
     window.addEventListener('scroll', handleScroll, { passive: true });

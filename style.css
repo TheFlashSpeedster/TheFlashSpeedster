@@ -851,7 +851,7 @@ h1, h2, h3, .logo {
 /* --------------------------------------------------------------------------
    10. Projects Section
    -------------------------------------------------------------------------- */
-.projects-grid, .ongoing-grid {
+.projects-grid {
     display: grid;
     gap: 1.6rem;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -982,64 +982,6 @@ h1, h2, h3, .logo {
     pointer-events: none;
 }
 
-/* Ongoing Sub-section */
-.ongoing-section {
-    margin-top: 3.5rem;
-}
-
-.ongoing-heading {
-    font-family: var(--font-subheading);
-    font-size: 1.4rem;
-    margin-bottom: 1.4rem;
-    text-transform: none;
-}
-
-.ongoing-card {
-    background: var(--card-bg);
-    border: 1.5px dashed var(--border-gold);
-    border-radius: var(--radius-md);
-    padding: 1.6rem;
-    transition: var(--transition-fast);
-}
-
-.ongoing-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--flash-gold);
-    box-shadow: 0 10px 28px rgba(197, 26, 26, 0.2);
-}
-
-.ongoing-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.8rem;
-    margin-bottom: 0.6rem;
-}
-
-.ongoing-title {
-    font-family: var(--font-subheading);
-    font-size: 1.25rem;
-    text-transform: none;
-    color: var(--text-white);
-}
-
-.ongoing-desc {
-    color: var(--text-gray);
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-
-.ongoing-badge {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 0.25rem 0.6rem;
-    border-radius: var(--radius-full);
-    color: #2ECC71;
-    border: 1px solid rgba(46, 204, 113, 0.6);
-    background: rgba(46, 204, 113, 0.1);
-    font-weight: 700;
-}
 
 /* --------------------------------------------------------------------------
    11. Certifications Section
