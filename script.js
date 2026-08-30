@@ -1,9 +1,9 @@
 /**
  * ==========================================================================
- * THE FLASH SPEEDSTER — CLIENT SCRIPT & INTERACTION ENGINE
+ * THE FLASH SPEEDSTER — CLIENT SCRIPT & HIGH PERFORMANCE ENGINE
  * Developer: Atul Kumar | Speedster Portfolio
- * Features: Speed Force Particle Canvas, Dynamic Project Rendering,
- *           ScrollSpy, Lightning Click Sparks, Interactive Navigation
+ * Features: High-Performance Canvas Particles, IntersectionObserver ScrollSpy,
+ *           Optimized Lightning Sparks, Zero-Lag Scrolling
  * ==========================================================================
  */
 
@@ -63,6 +63,9 @@ const projects = [
     }
 ];
 
+/* --------------------------------------------------------------------------
+   2. DOM References & State
+   -------------------------------------------------------------------------- */
 const dom = {
     navbar: document.getElementById('navbar'),
     navMenu: document.getElementById('nav-menu'),
@@ -75,24 +78,26 @@ const dom = {
 };
 
 /* --------------------------------------------------------------------------
-   3. Speed Force Particle Canvas Engine
+   3. High Performance Speed Force Canvas Engine (60fps Optimized)
    -------------------------------------------------------------------------- */
 class SpeedCanvasEngine {
     constructor(canvas) {
         this.canvas = canvas;
         if (!this.canvas) return;
-        this.ctx = canvas.getContext('2d');
+        this.ctx = canvas.getContext('2d', { alpha: true });
         this.particles = [];
         this.width = 0;
         this.height = 0;
         this.mouseX = null;
         this.mouseY = null;
+        this.isVisible = true;
         this.init();
     }
 
     init() {
         this.resize();
         window.addEventListener('resize', () => this.resize(), { passive: true });
+
         window.addEventListener('mousemove', (e) => {
             this.mouseX = e.clientX;
             this.mouseY = e.clientY;
@@ -101,6 +106,12 @@ class SpeedCanvasEngine {
         window.addEventListener('mouseleave', () => {
             this.mouseX = null;
             this.mouseY = null;
+        });
+
+        // Pause animation when tab is not visible to conserve battery & GPU
+        document.addEventListener('visibilitychange', () => {
+            this.isVisible = !document.hidden;
+            if (this.isVisible) this.animate();
         });
 
         this.createParticles();
@@ -115,17 +126,18 @@ class SpeedCanvasEngine {
     }
 
     createParticles() {
-        const count = Math.min(Math.floor(this.width / 22), 55);
+        // Optimized particle count for silky smooth 60/120fps performance
+        const count = Math.min(Math.floor(this.width / 35), 35);
         this.particles = [];
         for (let i = 0; i < count; i++) {
             this.particles.push({
                 x: Math.random() * this.width,
                 y: Math.random() * this.height,
-                radius: Math.random() * 2 + 1,
-                vx: (Math.random() - 0.5) * 0.7,
-                vy: (Math.random() - 0.5) * 0.7,
-                color: Math.random() > 0.4 ? '#FFDE00' : '#FF1E27',
-                alpha: Math.random() * 0.5 + 0.2,
+                radius: Math.random() * 1.5 + 1,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                color: Math.random() > 0.4 ? 'rgba(255, 222, 0, ' : 'rgba(255, 30, 39, ',
+                alpha: Math.random() * 0.4 + 0.2,
                 sparkleSpeed: Math.random() * 0.02 + 0.01,
                 sparkleAngle: Math.random() * Math.PI * 2
             });
@@ -133,6 +145,8 @@ class SpeedCanvasEngine {
     }
 
     animate() {
+        if (!this.isVisible) return;
+
         this.ctx.clearRect(0, 0, this.width, this.height);
 
         for (let i = 0; i < this.particles.length; i++) {
@@ -149,43 +163,27 @@ class SpeedCanvasEngine {
             p.sparkleAngle += p.sparkleSpeed;
             const currentAlpha = Math.abs(Math.sin(p.sparkleAngle)) * p.alpha;
 
-            if (this.mouseX !== null && this.mouseY !== null) {
-                const dx = this.mouseX - p.x;
-                const dy = this.mouseY - p.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 100) {
-                    p.x += (dx / dist) * -1.2;
-                    p.y += (dy / dist) * -1.2;
-                }
-            }
-
-            this.ctx.save();
-            this.ctx.globalAlpha = currentAlpha;
-            this.ctx.fillStyle = p.color;
-            this.ctx.shadowBlur = 6;
-            this.ctx.shadowColor = p.color;
+            // Direct circle drawing without heavy software shadowBlur
+            this.ctx.fillStyle = `${p.color}${currentAlpha})`;
             this.ctx.beginPath();
             this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
             this.ctx.fill();
-            this.ctx.restore();
 
+            // Lightweight connection lines
             for (let j = i + 1; j < this.particles.length; j++) {
                 const p2 = this.particles[j];
                 const dx = p.x - p2.x;
                 const dy = p.y - p2.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                const maxDist = 80;
+                const distSq = dx * dx + dy * dy;
 
-                if (dist < maxDist) {
-                    this.ctx.save();
-                    this.ctx.globalAlpha = (1 - dist / maxDist) * 0.12;
-                    this.ctx.strokeStyle = p.color;
-                    this.ctx.lineWidth = 0.7;
+                if (distSq < 4900) { // 70px squared
+                    const dist = Math.sqrt(distSq);
+                    this.ctx.strokeStyle = `rgba(255, 222, 0, ${(1 - dist / 70) * 0.08})`;
+                    this.ctx.lineWidth = 0.5;
                     this.ctx.beginPath();
                     this.ctx.moveTo(p.x, p.y);
                     this.ctx.lineTo(p2.x, p2.y);
                     this.ctx.stroke();
-                    this.ctx.restore();
                 }
             }
         }
@@ -229,29 +227,26 @@ function renderProjects() {
 }
 
 /* --------------------------------------------------------------------------
-   5. Lightning Click Sparks
+   5. Lightning Click Sparks (Lightweight & Clean)
    -------------------------------------------------------------------------- */
 function createLightning(x, y) {
     const container = document.getElementById('lightning-container');
     if (!container) return;
 
-    const sparkCount = 3;
-
-    for (let i = 0; i < sparkCount; i++) {
+    for (let i = 0; i < 3; i++) {
         const spark = document.createElement('div');
-        const angle = (Math.PI * 2 / sparkCount) * i + (Math.random() - 0.5);
-        const length = Math.random() * 60 + 35;
-        const color = Math.random() > 0.3 ? '#FFDE00' : '#FFFFFF';
+        const angle = (Math.PI * 2 / 3) * i + (Math.random() - 0.5);
+        const length = Math.random() * 50 + 30;
 
         spark.style.position = 'fixed';
         spark.style.left = `${x}px`;
         spark.style.top = `${y}px`;
         spark.style.width = '2px';
         spark.style.height = `${length}px`;
-        spark.style.background = color;
+        spark.style.background = '#FFDE00';
         spark.style.transformOrigin = 'top center';
         spark.style.transform = `rotate(${angle}rad)`;
-        spark.style.boxShadow = `0 0 8px ${color}, 0 0 16px #FF1E27`;
+        spark.style.boxShadow = '0 0 6px #FFDE00';
         spark.style.pointerEvents = 'none';
         spark.style.zIndex = '9999';
 
@@ -259,9 +254,9 @@ function createLightning(x, y) {
 
         const anim = spark.animate([
             { opacity: 1, height: `${length}px` },
-            { opacity: 0, height: `${length * 1.4}px` }
+            { opacity: 0, height: `${length * 1.3}px` }
         ], {
-            duration: 250 + Math.random() * 100,
+            duration: 220,
             easing: 'ease-out'
         });
 
@@ -270,57 +265,79 @@ function createLightning(x, y) {
 }
 
 /* --------------------------------------------------------------------------
-   6. ScrollSpy, Sticky Navbar & Speedometer
+   6. Native ScrollSpy via IntersectionObserver (Zero Layout Thrashing)
    -------------------------------------------------------------------------- */
-function handleScroll() {
-    const scrollY = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = docHeight > 0 ? (scrollY / docHeight) : 0;
+function initScrollSpy() {
+    const sections = document.querySelectorAll('section[id]');
+    if (!sections.length) return;
 
-    // Navbar Scrolled Glass
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                dom.navLinks.forEach(link => {
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+    });
+
+    sections.forEach(section => observer.observe(section));
+}
+
+/* --------------------------------------------------------------------------
+   7. Throttled Scroll Listener (requestAnimationFrame)
+   -------------------------------------------------------------------------- */
+let isScrolling = false;
+let lastScrollY = 0;
+
+function onScroll() {
+    lastScrollY = window.scrollY;
+
+    if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+            updateScrollUI(lastScrollY);
+            isScrolling = false;
+        });
+        isScrolling = true;
+    }
+}
+
+function updateScrollUI(scrollY) {
+    // 1. Navbar Glass State
     if (dom.navbar) {
-        if (scrollY > 50) {
+        if (scrollY > 40) {
             dom.navbar.classList.add('scrolled');
         } else {
             dom.navbar.classList.remove('scrolled');
         }
     }
 
-    // Floating Speedometer
+    // 2. Floating Speedometer Progress
     if (dom.speedometer && dom.progressCircle) {
         if (scrollY > 300) {
             dom.speedometer.classList.add('visible');
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = docHeight > 0 ? (scrollY / docHeight) : 0;
+            const circumference = 263.89;
+            const offset = circumference - (scrollPercent * circumference);
+            dom.progressCircle.style.strokeDashoffset = Math.max(0, offset);
         } else {
             dom.speedometer.classList.remove('visible');
         }
-
-        const circumference = 263.89;
-        const offset = circumference - (scrollPercent * circumference);
-        dom.progressCircle.style.strokeDashoffset = Math.max(0, offset);
     }
-
-    // ScrollSpy active link detection
-    const sections = document.querySelectorAll('section[id]');
-    let currentSectionId = '';
-
-    sections.forEach(section => {
-        const top = section.offsetTop - 120;
-        const height = section.offsetHeight;
-        if (scrollY >= top && scrollY < top + height) {
-            currentSectionId = section.getAttribute('id');
-        }
-    });
-
-    dom.navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSectionId}`) {
-            link.classList.add('active');
-        }
-    });
 }
 
 /* --------------------------------------------------------------------------
-   7. Navigation & Mobile Drawer
+   8. Navigation & Mobile Drawer
    -------------------------------------------------------------------------- */
 function initNavigation() {
     if (dom.menuToggle && dom.navMenu) {
@@ -355,7 +372,7 @@ function initNavigation() {
 }
 
 /* --------------------------------------------------------------------------
-   8. Initialize
+   9. Initialize
    -------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
     if (dom.speedCanvas) {
@@ -364,9 +381,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderProjects();
     initNavigation();
+    initScrollSpy();
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    updateScrollUI(window.scrollY);
 
     document.addEventListener('click', (e) => {
         createLightning(e.clientX, e.clientY);
