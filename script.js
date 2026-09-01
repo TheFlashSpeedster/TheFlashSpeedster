@@ -347,19 +347,24 @@ function initNavigation() {
             dom.menuToggle.setAttribute('aria-expanded', isOpen);
         });
 
+        const closeMenu = () => {
+            dom.navMenu.classList.remove('open');
+            dom.menuToggle.classList.remove('active');
+            dom.menuToggle.setAttribute('aria-expanded', false);
+        };
+
         dom.navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                dom.navMenu.classList.remove('open');
-                dom.menuToggle.classList.remove('active');
-                dom.menuToggle.setAttribute('aria-expanded', false);
-            });
+            link.addEventListener('click', closeMenu);
         });
+
+        const mobileCvBtn = dom.navMenu.querySelector('.mobile-cv-btn');
+        if (mobileCvBtn) {
+            mobileCvBtn.addEventListener('click', closeMenu);
+        }
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && dom.navMenu.classList.contains('open')) {
-                dom.navMenu.classList.remove('open');
-                dom.menuToggle.classList.remove('active');
-                dom.menuToggle.setAttribute('aria-expanded', false);
+                closeMenu();
             }
         });
     }
@@ -372,7 +377,100 @@ function initNavigation() {
 }
 
 /* --------------------------------------------------------------------------
-   9. Initialize
+   9. Toast Notifications
+   -------------------------------------------------------------------------- */
+function showToast(message, icon = 'fa-bolt') {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `<i class="fa-solid ${icon}"></i><span>${message}</span>`;
+    container.appendChild(toast);
+
+    toast.animate([
+        { opacity: 0, transform: 'translateY(15px) scale(0.95)' },
+        { opacity: 1, transform: 'translateY(0) scale(1)' }
+    ], {
+        duration: 250,
+        easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        fill: 'forwards'
+    });
+
+    setTimeout(() => {
+        const exitAnim = toast.animate([
+            { opacity: 1, transform: 'translateY(0) scale(1)' },
+            { opacity: 0, transform: 'translateY(-10px) scale(0.95)' }
+        ], {
+            duration: 200,
+            easing: 'ease-in',
+            fill: 'forwards'
+        });
+        exitAnim.onfinish = () => toast.remove();
+    }, 3500);
+}
+
+/* --------------------------------------------------------------------------
+   10. Contact Form Handler
+   -------------------------------------------------------------------------- */
+function initContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const submitBtn = document.getElementById('contact-submit-btn');
+        const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+
+        const nameInput = document.getElementById('contact-name');
+        const emailInput = document.getElementById('contact-email');
+        const subjectInput = document.getElementById('contact-subject');
+        const messageInput = document.getElementById('contact-message');
+
+        const name = nameInput ? nameInput.value.trim() : '';
+        const email = emailInput ? emailInput.value.trim() : '';
+        const subject = subjectInput ? subjectInput.value.trim() : 'Portfolio Inquiry';
+        const message = messageInput ? messageInput.value.trim() : '';
+
+        if (!name || !email || !message) {
+            showToast('Please fill out all required fields.', 'fa-triangle-exclamation');
+            return;
+        }
+
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Sending...</span>';
+        }
+
+        try {
+            if (submitBtn) {
+                const rect = submitBtn.getBoundingClientRect();
+                createLightning(rect.left + rect.width / 2, rect.top + rect.height / 2);
+            }
+
+            const mailtoSubject = encodeURIComponent(subject ? `[Portfolio] ${subject}` : `Message from ${name}`);
+            const mailtoBody = encodeURIComponent(`From: ${name} (${email})\n\nMessage:\n${message}`);
+            const mailtoUrl = `mailto:atulk5137@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+
+            await new Promise(res => setTimeout(res, 600));
+
+            window.location.href = mailtoUrl;
+            showToast('⚡ Message prepared! Opening email client...', 'fa-check');
+            form.reset();
+        } catch (err) {
+            showToast('Please email directly at atulk5137@gmail.com', 'fa-circle-exclamation');
+        } finally {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+            }
+        }
+    });
+}
+
+/* --------------------------------------------------------------------------
+   11. Initialize
    -------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
     if (dom.speedCanvas) {
@@ -382,6 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     initNavigation();
     initScrollSpy();
+    initContactForm();
 
     window.addEventListener('scroll', onScroll, { passive: true });
     updateScrollUI(window.scrollY);

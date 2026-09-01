@@ -48,22 +48,31 @@
 
             <div class="nav-menu" id="nav-menu">
                 <ul class="nav-links">
-                    <li><a href="#hero" class="nav-link active">Home</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#coding-profiles" class="nav-link">Profiles</a></li>
+                    <li><a href="#coding-profiles" class="nav-link">Coding Profiles</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#certifications" class="nav-link">Certificates</a></li>
                     <li><a href="#education" class="nav-link">Education</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
+                <a href="assets/docs/atul-resume.pdf" class="nav-cv-btn mobile-cv-btn" download="Atul_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    <span>Download CV</span>
+                </a>
             </div>
 
-            <button id="menu-toggle" class="menu-btn" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span class="bar bar-1"></span>
-                <span class="bar bar-2"></span>
-                <span class="bar bar-3"></span>
-            </button>
+            <div class="nav-actions">
+                <a href="assets/docs/Atul_Kumar_Resume.pdf" class="nav-cv-btn desktop-cv-btn" download="Atul_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    <span>Download CV</span>
+                </a>
+                <button id="menu-toggle" class="menu-btn" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="bar bar-1"></span>
+                    <span class="bar bar-2"></span>
+                    <span class="bar bar-3"></span>
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -77,7 +86,7 @@
                 <div class="hero-content">
                     <div class="hero-greeting">
                         <h1 class="glitch-title" data-text="WELCOME">WELCOME</h1>
-                        <p class="subtitle">Atul Kumar | Developer Portfolio</p>
+                        <p class="subtitle">Atul Kumar | Full Stack Developer</p>
                     </div>
 
                     <p class="hero-summary">
@@ -106,9 +115,9 @@
 
                     <!-- Call To Actions -->
                     <div class="hero-actions">
-                        <a href="#projects" class="btn btn-primary">
-                            <i class="fa-solid fa-bolt"></i>
-                            <span>View Projects</span>
+                        <a href="assets/docs/Atul_Kumar_Resume.pdf" class="btn btn-primary" download="Atul_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-file-arrow-down"></i>
+                            <span>Download CV</span>
                         </a>
                         <a href="#contact" class="btn btn-secondary">
                             <i class="fa-solid fa-envelope"></i>
@@ -117,13 +126,20 @@
                     </div>
                 </div>
 
-                <!-- Hero Visual: Flash Avatar Deck -->
+                <!-- Hero Visual: Circular Speed Force Avatar Deck -->
                 <div class="hero-visual">
-                    <div class="hero-photo-card">
-                        <div class="photo-wrapper">
-                            <img src="assets/images/flash.png" alt="Atul Kumar profile photo" class="hero-photo">
+                    <div class="hero-avatar-container">
+                        <!-- Animated Speed Force Outer Glow & Energy Rings -->
+                        <div class="avatar-ring avatar-ring-pulse" aria-hidden="true"></div>
+                        <div class="avatar-ring avatar-ring-outer" aria-hidden="true"></div>
+                        <div class="avatar-ring avatar-ring-middle" aria-hidden="true"></div>
+                        
+                        <!-- Circular Photo Frame -->
+                        <div class="avatar-frame">
+                            <img src="assets/images/me-red.png" alt="Atul Kumar profile photo" class="hero-avatar-img">
                         </div>
-                        <p class="hero-photo-label">Atul Kumar</p>
+
+                        
                     </div>
                 </div>
             </div>
@@ -246,6 +262,76 @@
                 <span class="chip"><i class="fa-solid fa-terminal"></i> VS Code</span>
                 <span class="chip"><i class="fa-solid fa-cloud"></i> Vercel</span>
             </div>
+
+            <!-- Soft Skills Subsection -->
+            <div class="soft-skills-container" id="soft-skills">
+                <div class="subgroup-header">
+                    <h3 class="subgroup-title">⚡ Soft Skills & <span class="highlight-gold">Core Strengths</span></h3>
+                    <p class="subgroup-subtitle">Interpersonal capabilities and working methodologies driving high-velocity development.</p>
+                </div>
+
+                <div class="soft-skills-grid">
+                    <div class="soft-skill-card">
+                        <div class="soft-skill-icon-wrapper">
+                            <i class="fa-solid fa-puzzle-piece"></i>
+                        </div>
+                        <div class="soft-skill-info">
+                            <h4 class="soft-skill-name">Problem Solving & Logic</h4>
+                            <p class="soft-skill-desc">Analytical approach to decomposing complex computational challenges into optimized, modular solutions.</p>
+                        </div>
+                    </div>
+
+                    <div class="soft-skill-card">
+                        <div class="soft-skill-icon-wrapper">
+                            <i class="fa-solid fa-stopwatch"></i>
+                        </div>
+                        <div class="soft-skill-info">
+                            <h4 class="soft-skill-name">Time Management & Focus</h4>
+                            <p class="soft-skill-desc">Certified in professional time management; skilled in milestone prioritization, sprint execution, and deep focus.</p>
+                        </div>
+                    </div>
+
+                    <div class="soft-skill-card">
+                        <div class="soft-skill-icon-wrapper">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+                        <div class="soft-skill-info">
+                            <h4 class="soft-skill-name">Team Collaboration</h4>
+                            <p class="soft-skill-desc">Thrives in cross-functional agile teams, collaborative pair programming, peer reviews, and open-source workflows.</p>
+                        </div>
+                    </div>
+
+                    <div class="soft-skill-card">
+                        <div class="soft-skill-icon-wrapper">
+                            <i class="fa-solid fa-bolt-lightning"></i>
+                        </div>
+                        <div class="soft-skill-info">
+                            <h4 class="soft-skill-name">Fast Learning & Adaptability</h4>
+                            <p class="soft-skill-desc">Speedster agility to master modern frameworks, emerging tech stacks, and evolving project requirements rapidly.</p>
+                        </div>
+                    </div>
+
+                    <div class="soft-skill-card">
+                        <div class="soft-skill-icon-wrapper">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <div class="soft-skill-info">
+                            <h4 class="soft-skill-name">Clear Communication</h4>
+                            <p class="soft-skill-desc">Articulating engineering decisions transparently, writing thorough documentation, and constructive discussions.</p>
+                        </div>
+                    </div>
+
+                    <div class="soft-skill-card">
+                        <div class="soft-skill-icon-wrapper">
+                            <i class="fa-solid fa-arrows-spin"></i>
+                        </div>
+                        <div class="soft-skill-info">
+                            <h4 class="soft-skill-name">Resilience & Debugging</h4>
+                            <p class="soft-skill-desc">Tenacity in tracing elusive bugs, edge case handling, and optimizing performance bottlenecks under pressure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Coding Profiles Section -->
@@ -317,29 +403,39 @@
         <!-- Certifications Section -->
         <section id="certifications" class="section cert-section">
             <div class="section-header">
-                <h2 class="section-title">Certifications <span class="highlight-crimson">(Certificates)</span></h2>
+                <h2 class="section-title">My <span class="highlight-crimson">Certificates</span></h2>
                 <p class="section-subtitle">Verified courses, professional workshops, and technical credentials.</p>
             </div>
 
             <div class="resume-grid">
-                <!-- Certificate 1: Time Management -->
+                <!-- Certificate 1: Times of India Community Development -->
                 <article class="resume-card">
+                    <a href="assets/docs/times-of-india-cert.pdf" target="_blank" rel="noopener noreferrer" class="cert-preview-wrap" aria-label="View Times of India Certificate PDF">
+                        <img src="assets/docs/times-of-india-cert.png" alt="Times of India - Community Development Project Certificate" class="cert-preview-img" loading="lazy">
+                    </a>
                     <div class="resume-card-top">
-                        <i class="fa-solid fa-stopwatch card-icon"></i>
-                        <h3>Effective Time Management</h3>
+                        <i class="fa-solid fa-newspaper card-icon" style="color: #FF3B44;"></i>
+                        <h3>Community Development Project</h3>
                     </div>
-                    <p class="card-meta"><strong>Provider:</strong> TECH VEDA &bull; <strong>Issued:</strong> 29 Oct 2025</p>
-                    <p>Demonstrated excellence in completing 5 hours of MOOC on Effective Time Management, passing a comprehensive proctored examination covering productivity strategies and task scheduling.</p>
+                    <p class="card-meta"><strong>Provider:</strong> Times Foundation (The Times of India) &bull; <strong>Issued:</strong> LPU Collaboration</p>
+                    <p>Awarded for active contribution to community-focused initiatives, demonstrating leadership, social responsibility, and dedicated service for sustainable community development.</p>
                     <div class="project-actions">
-                        <a href="assets/docs/time-management-cert.pdf" target="_blank" rel="noopener noreferrer" class="project-btn">
+                        <a href="assets/docs/times-of-india-cert.pdf" target="_blank" rel="noopener noreferrer" class="project-btn">
                             <i class="fa-solid fa-file-pdf"></i>
                             <span>View Certificate</span>
+                        </a>
+                        <a href="https://verification.givemycertificate.com/v/7691c424-4963-47e6-ab26-57a7f6158ee6" target="_blank" rel="noopener noreferrer" class="project-btn secondary">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Verify</span>
                         </a>
                     </div>
                 </article>
 
                 <!-- Certificate 2: Infosys AI -->
                 <article class="resume-card">
+                    <a href="assets/docs/infosys-introduction-to-artificial-intelligence.pdf" target="_blank" rel="noopener noreferrer" class="cert-preview-wrap" aria-label="View Infosys Artificial Intelligence Certificate PDF">
+                        <img src="assets/docs/intro-to-ai.png" alt="Infosys - Introduction to Artificial Intelligence Certificate" class="cert-preview-img" loading="lazy">
+                    </a>
                     <div class="resume-card-top">
                         <i class="fa-solid fa-brain card-icon" style="color: #007CC3;"></i>
                         <h3>Introduction to Artificial Intelligence</h3>
@@ -356,6 +452,9 @@
 
                 <!-- Certificate 3: Infosys Python -->
                 <article class="resume-card">
+                    <a href="assets/docs/infosys-introduction-to-python.pdf" target="_blank" rel="noopener noreferrer" class="cert-preview-wrap" aria-label="View Infosys Python Certificate PDF">
+                        <img src="assets/docs/intro-to-python.png" alt="Infosys - Introduction to Python Certificate" class="cert-preview-img" loading="lazy">
+                    </a>
                     <div class="resume-card-top">
                         <i class="fa-brands fa-python card-icon" style="color: #FFDE00;"></i>
                         <h3>Introduction to Python</h3>
@@ -364,6 +463,25 @@
                     <p>Successfully completed the course on Python programming, mastering foundational syntax, data structures, modular programming, and algorithmic problem solving in Python.</p>
                     <div class="project-actions">
                         <a href="assets/docs/infosys-introduction-to-python.pdf" target="_blank" rel="noopener noreferrer" class="project-btn">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <span>View Certificate</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Certificate 4: Time Management -->
+                <article class="resume-card">
+                    <a href="assets/docs/time-management-cert.pdf" target="_blank" rel="noopener noreferrer" class="cert-preview-wrap" aria-label="View Time Management Certificate PDF">
+                        <img src="assets/docs/time-management-cert.png" alt="TECH VEDA - Effective Time Management Certificate" class="cert-preview-img" loading="lazy">
+                    </a>
+                    <div class="resume-card-top">
+                        <i class="fa-solid fa-stopwatch card-icon" style="color: #FFA000;"></i>
+                        <h3>Effective Time Management</h3>
+                    </div>
+                    <p class="card-meta"><strong>Provider:</strong> TECH VEDA &bull; <strong>Issued:</strong> 29 Oct 2025</p>
+                    <p>Demonstrated excellence in completing 5 hours of MOOC on Effective Time Management, passing a comprehensive proctored examination covering productivity strategies and task scheduling.</p>
+                    <div class="project-actions">
+                        <a href="assets/docs/time-management-cert.pdf" target="_blank" rel="noopener noreferrer" class="project-btn">
                             <i class="fa-solid fa-file-pdf"></i>
                             <span>View Certificate</span>
                         </a>
@@ -431,13 +549,6 @@
 
             <div class="contact-details-grid">
                 <div class="contact-detail-card">
-                    <i class="fa-solid fa-user"></i>
-                    <div>
-                        <span class="contact-label">Name</span>
-                        <span class="contact-hint">Atul Kumar</span>
-                    </div>
-                </div>
-                <div class="contact-detail-card">
                     <i class="fa-solid fa-phone"></i>
                     <div>
                         <span class="contact-label">Phone</span>
@@ -489,6 +600,57 @@
                         <span class="contact-hint">atul-kumar-flash</span>
                     </div>
                 </a>
+            </div>
+
+            <!-- Direct Contact Form -->
+            <div class="contact-form-wrapper">
+                <div class="contact-form-card">
+                    <div class="form-header">
+                        <h3 class="form-title"><i class="fa-solid fa-paper-plane"></i> Send a <span class="highlight-crimson">Direct Message</span></h3>
+                        <p class="form-desc">Have a question, collaboration idea, or opportunity? Drop a message below and I'll respond lightning fast.</p>
+                    </div>
+
+                    <form id="contact-form" class="contact-form" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-name" class="form-label">Your Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-user input-icon"></i>
+                                    <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Alex Smith" required autocomplete="name" enterkeyhint="next">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-email" class="form-label">Your Email</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-envelope input-icon"></i>
+                                    <input type="email" id="contact-email" name="email" class="form-input" placeholder="e.g. alex@example.com" required autocomplete="email" enterkeyhint="next">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-subject" class="form-label">Subject</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-tag input-icon"></i>
+                                <input type="text" id="contact-subject" name="subject" class="form-input" placeholder="Project Inquiry / Job Opportunity" enterkeyhint="next">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-message" class="form-label">Message</label>
+                            <div class="input-wrapper textarea-wrapper">
+                                <i class="fa-solid fa-message input-icon textarea-icon"></i>
+                                <textarea id="contact-message" name="message" class="form-input form-textarea" rows="4" placeholder="Hello Atul, I would like to discuss..." required enterkeyhint="send"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="contact-submit-btn" class="btn btn-primary btn-submit">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
