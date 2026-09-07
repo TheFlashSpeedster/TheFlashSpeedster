@@ -74,7 +74,9 @@ const dom = {
     projectsGrid: document.getElementById('projects-grid'),
     speedometer: document.getElementById('floating-speedometer'),
     progressCircle: document.getElementById('scroll-progress-circle'),
-    speedCanvas: document.getElementById('speed-canvas')
+    speedCanvas: document.getElementById('speed-canvas'),
+    themeToggle: document.getElementById('theme-toggle'),
+    themeToggleMobile: document.getElementById('theme-toggle-mobile')
 };
 
 /* --------------------------------------------------------------------------
@@ -91,6 +93,7 @@ class SpeedCanvasEngine {
         this.mouseX = null;
         this.mouseY = null;
         this.isVisible = true;
+        this.theme = document.documentElement.getAttribute('data-theme') || 'dark';
         this.init();
     }
 
@@ -118,6 +121,11 @@ class SpeedCanvasEngine {
         this.animate();
     }
 
+    setTheme(newTheme) {
+        this.theme = newTheme;
+        this.createParticles();
+    }
+
     resize() {
         this.width = window.innerWidth;
         this.height = window.innerHeight;
@@ -129,18 +137,32 @@ class SpeedCanvasEngine {
         // Optimized particle count for silky smooth 60/120fps performance
         const count = Math.min(Math.floor(this.width / 35), 35);
         this.particles = [];
+        const isLight = this.theme === 'light';
+
         for (let i = 0; i < count; i++) {
+            const baseVy = (Math.random() - 0.5) * 0.5;
             this.particles.push({
                 x: Math.random() * this.width,
                 y: Math.random() * this.height,
                 radius: Math.random() * 1.5 + 1,
                 vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                color: Math.random() > 0.4 ? 'rgba(255, 222, 0, ' : 'rgba(255, 30, 39, ',
-                alpha: Math.random() * 0.4 + 0.2,
+                vy: baseVy,
+                baseVy: baseVy,
+                color: isLight
+                    ? (Math.random() > 0.4 ? 'rgba(217, 119, 6, ' : 'rgba(211, 24, 33, ')
+                    : (Math.random() > 0.4 ? 'rgba(255, 222, 0, ' : 'rgba(255, 30, 39, '),
+                alpha: isLight ? (Math.random() * 0.35 + 0.35) : (Math.random() * 0.4 + 0.2),
                 sparkleSpeed: Math.random() * 0.02 + 0.01,
                 sparkleAngle: Math.random() * Math.PI * 2
             });
+        }
+    }
+
+    onScrollVelocity(deltaY, direction) {
+        // Speed Force particle stream effect based on scroll direction
+        const impulse = Math.min(Math.abs(deltaY) * 0.035, 2.2) * (direction === 'down' ? -1 : 1);
+        for (let i = 0; i < this.particles.length; i++) {
+            this.particles[i].vy = this.particles[i].baseVy + impulse;
         }
     }
 
@@ -149,11 +171,17 @@ class SpeedCanvasEngine {
 
         this.ctx.clearRect(0, 0, this.width, this.height);
 
+        const isLight = this.theme === 'light';
+        const lineBaseColor = isLight ? 'rgba(211, 24, 33, ' : 'rgba(255, 222, 0, ';
+
         for (let i = 0; i < this.particles.length; i++) {
             const p = this.particles[i];
 
             p.x += p.vx;
             p.y += p.vy;
+
+            // Damping: smoothly recover to base vertical drifting speed
+            p.vy += (p.baseVy - p.vy) * 0.05;
 
             if (p.x < 0) p.x = this.width;
             if (p.x > this.width) p.x = 0;
@@ -178,7 +206,7 @@ class SpeedCanvasEngine {
 
                 if (distSq < 4900) { // 70px squared
                     const dist = Math.sqrt(distSq);
-                    this.ctx.strokeStyle = `rgba(255, 222, 0, ${(1 - dist / 70) * 0.08})`;
+                    this.ctx.strokeStyle = `${lineBaseColor}${(1 - dist / 70) * (isLight ? 0.07 : 0.08)})`;
                     this.ctx.lineWidth = 0.5;
                     this.ctx.beginPath();
                     this.ctx.moveTo(p.x, p.y);
@@ -198,8 +226,8 @@ class SpeedCanvasEngine {
 function renderProjects() {
     if (!dom.projectsGrid) return;
 
-    dom.projectsGrid.innerHTML = projects.map(project => `
-        <div class="project-card">
+    dom.projectsGrid.innerHTML = projects.map((project, index) => `
+        <div class="project-card" style="--stagger-i: ${index}">
             <div class="project-content">
                 <div class="project-header">
                     <h3 class="project-title">${project.title}</h3>
@@ -224,6 +252,10 @@ function renderProjects() {
             </div>
         </div>
     `).join('');
+
+    if (typeof window.observeNewRevealElements === 'function') {
+        window.observeNewRevealElements();
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -294,24 +326,40 @@ function initScrollSpy() {
 }
 
 /* --------------------------------------------------------------------------
-   7. Throttled Scroll Listener (requestAnimationFrame)
+   7. Throttled Scroll Listener & Velocity Tracker (requestAnimationFrame)
    -------------------------------------------------------------------------- */
 let isScrolling = false;
-let lastScrollY = 0;
+let lastScrollY = window.scrollY || 0;
+let currentScrollDirection = 'down';
+let scrollVelocity = 0;
+let canvasEngineInstance = null;
 
 function onScroll() {
-    lastScrollY = window.scrollY;
+    const currentY = window.scrollY || 0;
+    const deltaY = currentY - lastScrollY;
+
+    if (Math.abs(deltaY) >= 2) {
+        currentScrollDirection = deltaY > 0 ? 'down' : 'up';
+        scrollVelocity = Math.min(Math.abs(deltaY), 50);
+        document.documentElement.setAttribute('data-scroll-dir', currentScrollDirection);
+
+        if (canvasEngineInstance && typeof canvasEngineInstance.onScrollVelocity === 'function') {
+            canvasEngineInstance.onScrollVelocity(deltaY, currentScrollDirection);
+        }
+    }
+
+    lastScrollY = currentY;
 
     if (!isScrolling) {
         window.requestAnimationFrame(() => {
-            updateScrollUI(lastScrollY);
+            updateScrollUI(currentY, currentScrollDirection, scrollVelocity);
             isScrolling = false;
         });
         isScrolling = true;
     }
 }
 
-function updateScrollUI(scrollY) {
+function updateScrollUI(scrollY, direction = 'down', velocity = 0) {
     // 1. Navbar Glass State
     if (dom.navbar) {
         if (scrollY > 40) {
@@ -321,7 +369,7 @@ function updateScrollUI(scrollY) {
         }
     }
 
-    // 2. Floating Speedometer Progress
+    // 2. Floating Speedometer Progress & Flash Directional Dynamics
     if (dom.speedometer && dom.progressCircle) {
         if (scrollY > 300) {
             dom.speedometer.classList.add('visible');
@@ -330,6 +378,18 @@ function updateScrollUI(scrollY) {
             const circumference = 263.89;
             const offset = circumference - (scrollPercent * circumference);
             dom.progressCircle.style.strokeDashoffset = Math.max(0, offset);
+
+            const icon = dom.speedometer.querySelector('.speedometer-icon');
+            if (icon) {
+                if (velocity > 6) {
+                    const tilt = direction === 'down' ? 14 : -14;
+                    icon.style.transform = `scale(1.18) rotate(${tilt}deg)`;
+                    icon.style.filter = 'drop-shadow(0 0 10px #FFDE00) drop-shadow(0 0 18px #FF1E27)';
+                } else {
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                    icon.style.filter = '';
+                }
+            }
         } else {
             dom.speedometer.classList.remove('visible');
         }
@@ -340,21 +400,20 @@ function updateScrollUI(scrollY) {
    8. Navigation & Mobile Drawer
    -------------------------------------------------------------------------- */
 function initNavigation() {
-    if (dom.menuToggle && dom.navMenu) {
-        dom.menuToggle.addEventListener('click', () => {
-            const isOpen = dom.navMenu.classList.toggle('open');
-            dom.menuToggle.classList.toggle('active', isOpen);
-            dom.menuToggle.setAttribute('aria-expanded', isOpen);
-        });
-
-        const closeMenu = () => {
+    const closeMenu = () => {
+        if (dom.navMenu && dom.menuToggle) {
             dom.navMenu.classList.remove('open');
             dom.menuToggle.classList.remove('active');
-            dom.menuToggle.setAttribute('aria-expanded', false);
-        };
+            dom.menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    };
 
-        dom.navLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
+    if (dom.menuToggle && dom.navMenu) {
+        dom.menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = dom.navMenu.classList.toggle('open');
+            dom.menuToggle.classList.toggle('active', isOpen);
+            dom.menuToggle.setAttribute('aria-expanded', String(isOpen));
         });
 
         const mobileCvBtn = dom.navMenu.querySelector('.mobile-cv-btn');
@@ -362,11 +421,93 @@ function initNavigation() {
             mobileCvBtn.addEventListener('click', closeMenu);
         }
 
+        // Close on clicking outside mobile drawer
+        document.addEventListener('click', (e) => {
+            if (dom.navMenu.classList.contains('open')) {
+                if (!dom.navMenu.contains(e.target) && !dom.menuToggle.contains(e.target)) {
+                    closeMenu();
+                }
+            }
+        });
+
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && dom.navMenu.classList.contains('open')) {
                 closeMenu();
             }
         });
+    }
+
+    // Dynamic offset calculation for the floating HUD navbar
+    const getNavOffset = () => {
+        const navWrapper = document.querySelector('.navbar-wrapper');
+        if (!navWrapper) return 100;
+        const rect = navWrapper.getBoundingClientRect();
+        const computed = window.getComputedStyle(navWrapper);
+        const topMargin = parseFloat(computed.top) || 16;
+        // Floating navbar height + top position + breathing gap (18px)
+        return rect.height + topMargin + 18;
+    };
+
+    // Smooth scroll with precise offset for in-page anchors
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const targetId = link.getAttribute('href');
+            if (!targetId || targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (!targetElement) return;
+
+            e.preventDefault();
+            closeMenu();
+
+            if (targetId === '#hero') {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                const navOffset = getNavOffset();
+                const elementTop = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                const targetScrollY = Math.max(0, Math.round(elementTop - navOffset));
+
+                window.scrollTo({
+                    top: targetScrollY,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Instantly sync active nav links
+            dom.navLinks.forEach(navLink => {
+                if (navLink.getAttribute('href') === targetId) {
+                    navLink.classList.add('active');
+                } else {
+                    navLink.classList.remove('active');
+                }
+            });
+
+            // Update URL hash without browser abrupt jump
+            if (history.pushState) {
+                history.pushState(null, '', targetId);
+            } else {
+                window.location.hash = targetId;
+            }
+        });
+    });
+
+    // Handle initial hash in URL on page load with correct offset
+    if (window.location.hash && window.location.hash !== '#hero') {
+        const initialTarget = document.querySelector(window.location.hash);
+        if (initialTarget) {
+            setTimeout(() => {
+                const navOffset = getNavOffset();
+                const elementTop = initialTarget.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({
+                    top: Math.max(0, Math.round(elementTop - navOffset)),
+                    behavior: 'smooth'
+                });
+            }, 120);
+        }
     }
 
     if (dom.speedometer) {
@@ -470,20 +611,171 @@ function initContactForm() {
 }
 
 /* --------------------------------------------------------------------------
-   11. Initialize
+   11. Theme Toggle System (Light / Dark Mode)
+   -------------------------------------------------------------------------- */
+function initThemeToggle(canvasEngine) {
+    const THEME_KEY = 'speedster-theme';
+    const root = document.documentElement;
+    const desktopBtn = dom.themeToggle;
+    const mobileBtn = dom.themeToggleMobile;
+    const mobileText = document.querySelector('.theme-mode-text');
+
+    const getPreferredTheme = () => {
+        try {
+            const saved = localStorage.getItem(THEME_KEY);
+            if (saved) return saved;
+        } catch (e) {}
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+
+    const updateUI = (theme) => {
+        root.setAttribute('data-theme', theme);
+        root.style.colorScheme = theme;
+
+        const isDark = theme === 'dark';
+        const nextLabel = isDark ? 'Switch to light theme' : 'Switch to dark theme';
+        const labelText = isDark ? 'Dark Mode' : 'Light Mode';
+
+        if (desktopBtn) {
+            desktopBtn.setAttribute('aria-label', nextLabel);
+            desktopBtn.setAttribute('title', nextLabel);
+            desktopBtn.setAttribute('aria-checked', !isDark);
+        }
+
+        if (mobileBtn) {
+            mobileBtn.setAttribute('aria-label', nextLabel);
+            mobileBtn.setAttribute('title', nextLabel);
+            mobileBtn.setAttribute('aria-checked', !isDark);
+        }
+
+        if (mobileText) {
+            mobileText.textContent = labelText;
+        }
+
+        if (canvasEngine && typeof canvasEngine.setTheme === 'function') {
+            canvasEngine.setTheme(theme);
+        }
+    };
+
+    const toggleTheme = (e) => {
+        const current = root.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+
+        try {
+            localStorage.setItem(THEME_KEY, next);
+        } catch (err) {}
+
+        updateUI(next);
+
+        // Lightning micro-spark effect on the toggle button
+        if (e && e.currentTarget) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            createLightning(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        }
+
+        showToast(`Speed Force ${next === 'light' ? 'Light' : 'Dark'} Mode Activated ⚡`, next === 'light' ? 'fa-sun' : 'fa-moon');
+    };
+
+    if (desktopBtn) desktopBtn.addEventListener('click', toggleTheme);
+    if (mobileBtn) mobileBtn.addEventListener('click', toggleTheme);
+
+    // Dynamic adaptation if system theme changes and no explicit user pin is set
+    if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            try {
+                if (!localStorage.getItem(THEME_KEY)) {
+                    updateUI(e.matches ? 'dark' : 'light');
+                }
+            } catch (err) {}
+        });
+    }
+
+    // Sync initial state
+    updateUI(root.getAttribute('data-theme') || getPreferredTheme());
+}
+
+/* --------------------------------------------------------------------------
+   12. High-Performance Bidirectional Scroll-Driven & Observer Animations
+   -------------------------------------------------------------------------- */
+function initScrollReveal() {
+    // Add js-reveal class to activate CSS initial hidden state progressively
+    document.documentElement.classList.add('js-reveal');
+
+    // Accessibility check: disable animations if reduced motion is requested
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+        document.querySelectorAll('.reveal-on-scroll, .reveal-stagger').forEach(el => {
+            el.classList.add('is-revealed');
+        });
+        return;
+    }
+
+    // Calculate and apply staggered index to all container children
+    const applyStaggerIndices = (container) => {
+        Array.from(container.children).forEach((child, index) => {
+            child.style.setProperty('--stagger-i', index);
+        });
+    };
+
+    document.querySelectorAll('.reveal-stagger').forEach(applyStaggerIndices);
+
+    // Continuous bidirectional observer: triggers on both downward and upward scroll passes
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const el = entry.target;
+            const dir = currentScrollDirection || 'down';
+
+            if (entry.isIntersecting) {
+                // Apply direction-aware speed surge classes
+                el.classList.remove('scroll-enter-down', 'scroll-enter-up');
+                el.classList.add(dir === 'down' ? 'scroll-enter-down' : 'scroll-enter-up');
+                el.classList.add('is-revealed');
+            } else {
+                // Reset when element moves well outside viewport buffer to allow re-animation on return
+                const rect = entry.boundingClientRect;
+                const isOutOfView = rect.bottom < -40 || rect.top > window.innerHeight + 40;
+
+                if (isOutOfView) {
+                    el.classList.remove('is-revealed', 'scroll-enter-down', 'scroll-enter-up');
+                }
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '60px 0px 60px 0px',
+        threshold: 0.08
+    });
+
+    document.querySelectorAll('.reveal-on-scroll, .reveal-stagger').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Expose hook to observe dynamically injected elements (like project cards)
+    window.observeNewRevealElements = () => {
+        document.querySelectorAll('.reveal-stagger').forEach(applyStaggerIndices);
+        document.querySelectorAll('.reveal-on-scroll, .reveal-stagger').forEach(el => {
+            observer.observe(el);
+        });
+    };
+}
+
+/* --------------------------------------------------------------------------
+   13. Initialize
    -------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
     if (dom.speedCanvas) {
-        new SpeedCanvasEngine(dom.speedCanvas);
+        canvasEngineInstance = new SpeedCanvasEngine(dom.speedCanvas);
     }
 
+    initThemeToggle(canvasEngineInstance);
     renderProjects();
+    initScrollReveal();
     initNavigation();
     initScrollSpy();
     initContactForm();
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    updateScrollUI(window.scrollY);
+    updateScrollUI(window.scrollY, currentScrollDirection, 0);
 
     document.addEventListener('click', (e) => {
         createLightning(e.clientX, e.clientY);
