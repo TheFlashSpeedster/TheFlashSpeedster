@@ -1,0 +1,75 @@
+/* --------------------------------------------------------------------------
+   Floating Speedometer Component Styles
+   -------------------------------------------------------------------------- */
+.floating-speedometer {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(13, 3, 5, 0.92);
+    border: 1px solid var(--border-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+}
+
+.floating-speedometer.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.floating-speedometer:hover {
+    transform: scale(1.08);
+}
+
+.speedometer-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.speedometer-track {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 6;
+}
+
+.speedometer-progress {
+    fill: none;
+    stroke: var(--flash-gold);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 264;
+    stroke-dashoffset: 264;
+    transition: stroke-dashoffset 0.1s linear;
+}
+
+.speedometer-icon {
+    font-size: 1.1rem;
+    color: var(--flash-gold);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+    display: inline-block;
+}
+
+/* Light Theme Overrides */
+html[data-theme="light"] .floating-speedometer {
+    background: rgba(255, 255, 255, 0.94);
+    border-color: rgba(217, 119, 6, 0.4);
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
+}
+
+html[data-theme="light"] .speedometer-track {
+    stroke: rgba(15, 23, 42, 0.08);
+}

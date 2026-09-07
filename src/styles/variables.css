@@ -1,0 +1,92 @@
+/* --------------------------------------------------------------------------
+   Speed Force Design Tokens & Theme Custom Properties
+   -------------------------------------------------------------------------- */
+:root {
+    /* Primary Flash Colors */
+    --primary-red: #C51A1A;
+    --flash-red: #FF1E27;
+    --flash-red-bright: #FF3B44;
+    --dark-red: #6D0C0C;
+    --deep-red: #3A0507;
+
+    --flash-gold: #FFDE00;
+    --flash-gold-bright: #FFE84D;
+    --gold-accent: #FFD700;
+    --flash-amber: #FFA000;
+
+    /* Backgrounds & GPU-Optimized Surfaces */
+    --bg-void: #070102;
+    --bg-dark: #0D0305;
+    --bg-surface: #150608;
+    --card-bg: rgba(24, 7, 10, 0.92);
+    --card-bg-hover: rgba(38, 10, 15, 0.96);
+    --nav-bg: rgba(13, 3, 5, 0.88);
+
+    /* Text Colors */
+    --text-white: #FFFFFF;
+    --text-light: #F3F4F6;
+    --text-gray: #D1D5DB;
+    --text-muted: #9CA3AF;
+
+    /* Borders & Glows */
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-gold: rgba(255, 222, 0, 0.28);
+    --border-red: rgba(255, 30, 39, 0.28);
+
+    --glow-red: 0 0 20px rgba(255, 30, 39, 0.25);
+    --glow-gold: 0 0 16px rgba(255, 222, 0, 0.25);
+    --glow-intense: 0 0 28px rgba(255, 222, 0, 0.4), 0 0 45px rgba(255, 30, 39, 0.3);
+
+    /* Typography */
+    --font-heading: 'Russo One', sans-serif;
+    --font-subheading: 'Sora', sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-brand: 'Plus Jakarta Sans', sans-serif;
+
+    /* Sizing & Radius */
+    --nav-height: 76px;
+    --container-max-width: 1300px;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease-out;
+    --transition-normal: 0.25s ease-out;
+}
+
+/* Light Theme Tokens (Speed Force S.T.A.R. Labs Aesthetic) */
+:root[data-theme="light"],
+html[data-theme="light"] {
+    --primary-red: #D31821;
+    --flash-red: #E01822;
+    --flash-red-bright: #FF2B35;
+    --dark-red: #8B1015;
+    --deep-red: #580B0F;
+
+    --flash-gold: #D97706;
+    --flash-gold-bright: #F59E0B;
+    --gold-accent: #B45309;
+    --flash-amber: #D97706;
+
+    --bg-void: #F8F9FC;
+    --bg-dark: #FFFFFF;
+    --bg-surface: #F1F4F9;
+    --card-bg: rgba(255, 255, 255, 0.94);
+    --card-bg-hover: #FFFFFF;
+    --nav-bg: rgba(255, 255, 255, 0.92);
+
+    --text-white: #0F172A;
+    --text-light: #1E293B;
+    --text-gray: #475569;
+    --text-muted: #64748B;
+
+    --border-subtle: rgba(15, 23, 42, 0.08);
+    --border-gold: rgba(217, 119, 6, 0.35);
+    --border-red: rgba(224, 24, 34, 0.25);
+
+    --glow-red: 0 4px 20px rgba(220, 38, 38, 0.12);
+    --glow-gold: 0 4px 16px rgba(217, 119, 6, 0.15);
+    --glow-intense: 0 8px 24px rgba(217, 119, 6, 0.22), 0 4px 16px rgba(224, 24, 34, 0.12);
+}

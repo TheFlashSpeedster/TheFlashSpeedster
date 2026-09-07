@@ -1,0 +1,282 @@
+/* --------------------------------------------------------------------------
+   Speed Force Keyframes & Bidirectional Scroll Animations
+   -------------------------------------------------------------------------- */
+
+/* Basic Brand Keyframes */
+@keyframes pulseTitle {
+    0%, 100% { text-shadow: 2px 2px 0px var(--flash-gold), 0 0 25px rgba(197, 26, 26, 0.5); }
+    50% { text-shadow: 3px 3px 0px var(--flash-gold), 0 0 35px rgba(197, 26, 26, 0.7); }
+}
+
+@keyframes boltPulse {
+    0%, 100% { transform: scale(1) rotate(-4deg); opacity: 1; }
+    50% { transform: scale(1.1) rotate(4deg); opacity: 0.8; }
+}
+
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* Card container position for sweep pseudo-elements */
+.info-panel,
+.fact-item,
+.skill-card,
+.soft-skill-card,
+.contact-card,
+.contact-detail-card,
+.project-card,
+.resume-card,
+.timeline-item,
+.contact-form-card {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Base Hidden State when JS reveal is active */
+html.js-reveal .reveal-on-scroll {
+    opacity: 0;
+    transform: translate3d(0, 36px, 0) scale3d(0.98, 0.98, 1);
+    filter: blur(4px);
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform, filter;
+}
+
+/* Inverted initial position when scrolling UP */
+html.js-reveal[data-scroll-dir="up"] .reveal-on-scroll:not(.is-revealed) {
+    transform: translate3d(0, -36px, 0) scale3d(0.98, 0.98, 1);
+}
+
+/* Direction-specific overrides */
+html.js-reveal .reveal-on-scroll[data-reveal="fade-left"]:not(.is-revealed) {
+    transform: translate3d(-38px, 0, 0);
+}
+
+html.js-reveal .reveal-on-scroll[data-reveal="fade-right"]:not(.is-revealed) {
+    transform: translate3d(38px, 0, 0);
+}
+
+html.js-reveal .reveal-on-scroll[data-reveal="zoom"]:not(.is-revealed) {
+    transform: scale3d(0.91, 0.91, 1);
+}
+
+/* Revealed State */
+html.js-reveal .reveal-on-scroll.is-revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    filter: blur(0);
+}
+
+/* Bidirectional Surge Animations */
+html.js-reveal .reveal-on-scroll.is-revealed.scroll-enter-down {
+    animation: flashSurgeDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+html.js-reveal .reveal-on-scroll.is-revealed.scroll-enter-up {
+    animation: flashSurgeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes flashSurgeDown {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 36px, 0) scale3d(0.98, 0.98, 1);
+        filter: blur(4px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+        filter: blur(0);
+    }
+}
+
+@keyframes flashSurgeUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -36px, 0) scale3d(0.98, 0.98, 1);
+        filter: blur(4px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+        filter: blur(0);
+    }
+}
+
+/* Staggered Grid Container & Children */
+html.js-reveal .reveal-stagger > * {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+    filter: blur(3px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--stagger-i, 0) * 0.055s);
+    will-change: opacity, transform, filter;
+}
+
+html.js-reveal[data-scroll-dir="up"] .reveal-stagger:not(.is-revealed) > * {
+    transform: translate3d(0, -26px, 0);
+}
+
+html.js-reveal .reveal-stagger.is-revealed > * {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+}
+
+/* Speed Force Lightning Shimmer Sweep (Card Phasing) */
+.info-panel::before,
+.fact-item::before,
+.skill-card::before,
+.soft-skill-card::before,
+.contact-card::before,
+.contact-detail-card::before,
+.project-card::before,
+.resume-card::before,
+.timeline-item::before,
+.contact-form-card::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    left: -60%;
+    width: 220%;
+    height: 220%;
+    background: linear-gradient(
+        118deg,
+        transparent 32%,
+        rgba(255, 222, 0, 0.22) 46%,
+        rgba(255, 30, 39, 0.42) 50%,
+        rgba(255, 222, 0, 0.55) 54%,
+        transparent 68%
+    );
+    transform: translateX(-150%) rotate(25deg);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 4;
+}
+
+html[data-theme="light"] .info-panel::before,
+html[data-theme="light"] .fact-item::before,
+html[data-theme="light"] .skill-card::before,
+html[data-theme="light"] .soft-skill-card::before,
+html[data-theme="light"] .contact-card::before,
+html[data-theme="light"] .contact-detail-card::before,
+html[data-theme="light"] .project-card::before,
+html[data-theme="light"] .resume-card::before,
+html[data-theme="light"] .timeline-item::before,
+html[data-theme="light"] .contact-form-card::before {
+    background: linear-gradient(
+        118deg,
+        transparent 32%,
+        rgba(217, 119, 6, 0.18) 46%,
+        rgba(224, 24, 34, 0.3) 50%,
+        rgba(217, 119, 6, 0.32) 54%,
+        transparent 68%
+    );
+}
+
+.is-revealed.scroll-enter-down::before,
+.reveal-stagger.is-revealed.scroll-enter-down > *::before {
+    animation: flashLightningSweepDown 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.is-revealed.scroll-enter-up::before,
+.reveal-stagger.is-revealed.scroll-enter-up > *::before {
+    animation: flashLightningSweepUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes flashLightningSweepDown {
+    0% { transform: translateX(-140%) rotate(25deg); opacity: 0; }
+    20% { opacity: 0.95; }
+    100% { transform: translateX(140%) rotate(25deg); opacity: 0; }
+}
+
+@keyframes flashLightningSweepUp {
+    0% { transform: translateX(140%) rotate(25deg); opacity: 0; }
+    20% { opacity: 0.95; }
+    100% { transform: translateX(-140%) rotate(25deg); opacity: 0; }
+}
+
+/* Electric Border Flash on Reveal */
+.is-revealed.scroll-enter-down,
+.is-revealed.scroll-enter-up {
+    animation: flashCardBorderGlow 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes flashCardBorderGlow {
+    0% { box-shadow: 0 0 0 rgba(255, 222, 0, 0); }
+    30% { box-shadow: 0 0 22px rgba(255, 222, 0, 0.4), 0 0 35px rgba(255, 30, 39, 0.25); border-color: var(--flash-gold); }
+    100% { box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2); }
+}
+
+/* Section Header Lightning Bolt Burst */
+.section-header.is-revealed.scroll-enter-down .section-title::after {
+    animation: flashBoltArcDown 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards, boltPulse 2s ease-in-out infinite 0.65s;
+}
+
+.section-header.is-revealed.scroll-enter-up .section-title::after {
+    animation: flashBoltArcUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards, boltPulse 2s ease-in-out infinite 0.65s;
+}
+
+@keyframes flashBoltArcDown {
+    0% {
+        transform: translateY(-22px) scale(0.6) rotate(-25deg);
+        opacity: 0;
+        filter: drop-shadow(0 0 0 transparent);
+    }
+    50% {
+        transform: translateY(2px) scale(1.4) rotate(15deg);
+        opacity: 1;
+        filter: drop-shadow(0 0 16px var(--flash-gold)) drop-shadow(0 0 28px var(--flash-red));
+    }
+    100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 1;
+        filter: drop-shadow(0 0 6px var(--flash-gold));
+    }
+}
+
+@keyframes flashBoltArcUp {
+    0% {
+        transform: translateY(22px) scale(0.6) rotate(25deg);
+        opacity: 0;
+        filter: drop-shadow(0 0 0 transparent);
+    }
+    50% {
+        transform: translateY(-2px) scale(1.4) rotate(-15deg);
+        opacity: 1;
+        filter: drop-shadow(0 0 16px var(--flash-gold)) drop-shadow(0 0 28px var(--flash-red));
+    }
+    100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 1;
+        filter: drop-shadow(0 0 6px var(--flash-gold));
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    html.js-reveal .reveal-on-scroll,
+    html.js-reveal .reveal-stagger > * {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .info-panel::before,
+    .fact-item::before,
+    .skill-card::before,
+    .soft-skill-card::before,
+    .contact-card::before,
+    .contact-detail-card::before,
+    .project-card::before,
+    .resume-card::before,
+    .timeline-item::before,
+    .contact-form-card::before {
+        display: none !important;
+    }
+}

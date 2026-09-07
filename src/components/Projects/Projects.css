@@ -1,0 +1,171 @@
+/* --------------------------------------------------------------------------
+   Projects Section Component Styles
+   -------------------------------------------------------------------------- */
+.projects-grid {
+    display: grid;
+    gap: 1.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--flash-gold);
+    background: var(--card-bg-hover);
+}
+
+.project-content {
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-title {
+    font-family: var(--font-subheading);
+    font-size: 1.3rem;
+    color: var(--flash-gold);
+    text-transform: none;
+}
+
+.project-date {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-gold);
+    background: rgba(255, 222, 0, 0.08);
+    color: var(--flash-gold);
+    white-space: nowrap;
+}
+
+.project-desc {
+    color: var(--text-gray);
+    margin-bottom: 1.1rem;
+    line-height: 1.6;
+    font-size: 0.94rem;
+    flex-grow: 1;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+}
+
+.tech-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.project-actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.project-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    font-weight: 600;
+    border: 1px solid var(--border-subtle);
+    transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.project-btn i {
+    color: var(--flash-gold);
+}
+
+.project-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 222, 0, 0.15);
+    border-color: var(--flash-gold);
+}
+
+.project-btn.secondary {
+    background: rgba(197, 26, 26, 0.15);
+    border-color: rgba(197, 26, 26, 0.4);
+}
+
+.project-btn.secondary i {
+    color: #ff7b7b;
+}
+
+.project-btn.is-disabled {
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+/* Light Theme Overrides */
+html[data-theme="light"] .project-card {
+    background: var(--card-bg);
+    border-color: var(--border-subtle);
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+html[data-theme="light"] .project-card:hover {
+    background: var(--card-bg-hover);
+    border-color: var(--border-gold);
+    box-shadow: 0 12px 28px rgba(211, 24, 33, 0.08);
+}
+
+html[data-theme="light"] .project-desc {
+    color: #475569;
+}
+
+html[data-theme="light"] .tech-chip {
+    background: rgba(211, 24, 33, 0.06);
+    border-color: rgba(211, 24, 33, 0.16);
+    color: var(--primary-red);
+}
+
+html[data-theme="light"] .project-btn {
+    background: #FFFFFF;
+    border-color: rgba(15, 23, 42, 0.12);
+    color: #0F172A;
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.05);
+}
+
+html[data-theme="light"] .project-btn:hover {
+    background: rgba(217, 119, 6, 0.1);
+    border-color: var(--flash-gold);
+}
+
+html[data-theme="light"] .project-btn.secondary {
+    background: rgba(224, 24, 34, 0.08);
+    border-color: rgba(224, 24, 34, 0.25);
+    color: var(--primary-red);
+}

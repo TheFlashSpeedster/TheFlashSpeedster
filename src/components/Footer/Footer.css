@@ -1,0 +1,44 @@
+/* --------------------------------------------------------------------------
+   Footer Component Styles
+   -------------------------------------------------------------------------- */
+footer {
+    background: linear-gradient(180deg, var(--bg-void) 0%, rgba(13, 3, 5, 0.98) 100%);
+    border-top: 1px solid var(--border-gold);
+    padding: 2rem clamp(1.5rem, 3vw, 2.4rem);
+    margin-top: 2.5rem;
+}
+
+.footer-content {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.back-to-top {
+    color: var(--flash-gold);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+}
+
+.back-to-top:hover {
+    transform: translateY(-2px);
+}
+
+/* Light Theme Overrides */
+html[data-theme="light"] footer {
+    background: linear-gradient(180deg, var(--bg-void) 0%, #FFFFFF 100%);
+    border-top-color: rgba(15, 23, 42, 0.08);
+}
+
+html[data-theme="light"] .footer-content {
+    color: #64748B;
+}

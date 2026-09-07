@@ -1,0 +1,125 @@
+/* --------------------------------------------------------------------------
+   Education Section Component Styles
+   -------------------------------------------------------------------------- */
+.timeline {
+    display: grid;
+    gap: 1.2rem;
+}
+
+.timeline-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.7rem;
+    position: relative;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.timeline-item:hover {
+    border-color: var(--border-gold);
+    background: var(--card-bg-hover);
+    transform: translateX(3px);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    bottom: 14px;
+    width: 4px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(180deg, var(--flash-gold), var(--primary-red));
+}
+
+.timeline-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-left: 0.8rem;
+    margin-bottom: 0.7rem;
+    align-items: flex-start;
+}
+
+.timeline-role {
+    font-family: var(--font-subheading);
+    text-transform: none;
+    font-size: 1.15rem;
+    color: var(--flash-gold);
+}
+
+.timeline-place {
+    color: #ffd1d1;
+    margin-top: 0.2rem;
+    font-size: 0.95rem;
+}
+
+.timeline-period {
+    white-space: nowrap;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--border-gold);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-full);
+    color: var(--flash-gold);
+    font-weight: 600;
+}
+
+.timeline-list {
+    list-style: disc;
+    padding-left: 2rem;
+    color: var(--text-gray);
+    line-height: 1.65;
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.95rem;
+}
+
+.timeline-list strong {
+    color: var(--text-white);
+}
+
+/* Light Theme Overrides */
+html[data-theme="light"] .timeline-item {
+    background: var(--card-bg);
+    border-color: var(--border-subtle);
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+html[data-theme="light"] .timeline-item:hover {
+    background: var(--card-bg-hover);
+    border-color: var(--border-gold);
+    box-shadow: 0 12px 28px rgba(211, 24, 33, 0.08);
+}
+
+html[data-theme="light"] .timeline-place {
+    color: #64748B;
+}
+
+html[data-theme="light"] .timeline-period {
+    background: rgba(217, 119, 6, 0.08);
+    border-color: rgba(217, 119, 6, 0.3);
+    color: var(--flash-gold);
+}
+
+html[data-theme="light"] .timeline-list {
+    color: #475569;
+}
+
+html[data-theme="light"] .timeline-list strong {
+    color: #0F172A;
+}
+
+/* Responsive */
+@media (max-width: 580px) {
+    .timeline-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .timeline-period {
+        white-space: normal;
+    }
+}

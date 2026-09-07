@@ -1,0 +1,73 @@
+/* --------------------------------------------------------------------------
+   Coding Profiles Section Component Styles
+   -------------------------------------------------------------------------- */
+.coding-section .contact-grid {
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.coding-section .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.1rem 1.3rem;
+    color: var(--text-white);
+    transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+    position: relative;
+}
+
+.coding-section .contact-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-gold);
+    background: var(--card-bg-hover);
+}
+
+.coding-section .contact-icon {
+    font-size: 1.5rem;
+    color: var(--flash-gold);
+    background: rgba(255, 222, 0, 0.08);
+    padding: 0.7rem;
+    border-radius: var(--radius-sm);
+    min-width: 46px;
+    text-align: center;
+}
+
+.coding-section .contact-label {
+    display: block;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+}
+
+.coding-section .contact-hint {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+}
+
+/* Light Theme Overrides */
+html[data-theme="light"] .coding-section .contact-card {
+    background: var(--card-bg);
+    border-color: var(--border-subtle);
+    color: #0F172A;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+html[data-theme="light"] .coding-section .contact-card:hover {
+    background: var(--card-bg-hover);
+    border-color: var(--border-gold);
+    box-shadow: 0 12px 28px rgba(211, 24, 33, 0.08);
+}
+
+html[data-theme="light"] .coding-section .contact-icon {
+    background: rgba(217, 119, 6, 0.1);
+}
+
+html[data-theme="light"] .coding-section .contact-hint {
+    color: #475569;
+}
