@@ -633,7 +633,7 @@ function initThemeToggle(canvasEngine) {
         root.style.colorScheme = theme;
 
         const isDark = theme === 'dark';
-        const nextLabel = isDark ? 'Switch to light theme' : 'Switch to dark theme';
+        const nextLabel = isDark ? "Switch to light theme (Press 'T')" : "Switch to dark theme (Press 'T')";
         const labelText = isDark ? 'Dark Mode' : 'Light Mode';
 
         if (desktopBtn) {
@@ -672,12 +672,34 @@ function initThemeToggle(canvasEngine) {
             const rect = e.currentTarget.getBoundingClientRect();
             createLightning(rect.left + rect.width / 2, rect.top + rect.height / 2);
         }
-
-        showToast(`Speed Force ${next === 'light' ? 'Light' : 'Dark'} Mode Activated ⚡`, next === 'light' ? 'fa-sun' : 'fa-moon');
     };
 
     if (desktopBtn) desktopBtn.addEventListener('click', toggleTheme);
     if (mobileBtn) mobileBtn.addEventListener('click', toggleTheme);
+
+    // Keyboard shortcut: Press 'T' or 't' to toggle theme
+    document.addEventListener('keydown', (e) => {
+        // Prevent toggle if user is typing in form inputs, textareas, or contentEditable
+        const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+        if (
+            activeTag === 'input' ||
+            activeTag === 'textarea' ||
+            (document.activeElement && document.activeElement.isContentEditable)
+        ) {
+            return;
+        }
+
+        // Avoid overriding browser shortcuts like Cmd+T or Ctrl+T (new tab) or Alt+T
+        if (e.metaKey || e.ctrlKey || e.altKey) {
+            return;
+        }
+
+        if (e.key === 't' || e.key === 'T') {
+            e.preventDefault();
+            const activeBtn = (desktopBtn && desktopBtn.offsetParent !== null) ? desktopBtn : mobileBtn;
+            toggleTheme(activeBtn ? { currentTarget: activeBtn } : null);
+        }
+    });
 
     // Dynamic adaptation if system theme changes and no explicit user pin is set
     if (window.matchMedia) {
